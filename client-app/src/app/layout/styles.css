@@ -1,5 +1,5 @@
 body {
-  background-color:#243346 !important;
+  background-color:#E1EBEE !important;
 }
 
 .ui.inverted.top.fixed.menu {
@@ -14,4 +14,20 @@ body {
 
 .ui.clearing.segment {
   margin-right:10%;
+}
+
+.ui.segment:last-child {
+  background-color: #20B2AA;
+  border: 0px;
+}
+.ui.items>.item .content img {
+  margin-left: 25%;
+}
+
+.ui.card>.content {
+  background-color: #20B2AA;
+}
+.ui.card>.extra, .ui.cards>.card>.extra {
+background: #20B2AA;
+
 }

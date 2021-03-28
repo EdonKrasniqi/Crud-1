@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item, Button, Label, Segment} from 'semantic-ui-react'
+import { Item, Button, Label, Segment, Image} from 'semantic-ui-react'
 import { IProduct } from '../../../app/models/product'
 
 interface IProps {
@@ -21,7 +21,8 @@ interface IProps {
         {products.map(products => (
         <Item key={products.id}>
           <Item.Content>
-            <Item.Header as='a'>{products.title}</Item.Header>
+          <Image src={`/assets/categoryImages/${products.category}.png`} />
+            <Item.Header >{products.title}</Item.Header>
             <Item.Meta>{products.date}</Item.Meta>
             <Item.Description>
               <div>{products.description}</div>

@@ -1,9 +1,9 @@
 import React, {useState, useEffect, Fragment } from 'react';
 import { Container } from 'semantic-ui-react';
-import axios from 'axios';
 import { IProduct } from '../models/product';
 import NavBar from '../../features/nav/NavBar';
 import ProductsDashboard from '../../features/products/dashboard/ProductsDashboard';
+import agent from '../api/agent';
 
 
 const App = () =>{
@@ -23,26 +23,32 @@ const App = () =>{
   }
 
   const handleCreateProduct = (product: IProduct) => {
-    setProducts([...products,product])
-    setSelectedProduct(product);
-    setEditMode(false);
+    agent.Products.create(product).then(() => {
+      setProducts([...products,product])
+      setSelectedProduct(product);
+      setEditMode(false);
+    })
   }
 
   const handleEditProduct = (product: IProduct) => {
-    setProducts ([...products.filter(a =>a.id !== product.id), product])
-    setSelectedProduct(product);
-    setEditMode(false);
+    agent.Products.update(product).then(() => {
+      setProducts ([...products.filter(a =>a.id !== product.id), product])
+      setSelectedProduct(product);
+      setEditMode(false);
+    })
   }
 
   const handleDeleteProduct = (id: string) => {
-    setProducts([...products.filter(a => a.id !== id)])
+    agent.Products.delete(id).then(() => {
+      setProducts([...products.filter(a => a.id !== id)])
+    })
   }
 
   useEffect(() => {
-     axios.get<IProduct[]>('http://localhost:5000/api/products')
+    agent.Products.list()
      .then((response) =>  {
        let products: IProduct[] = [];
-       response.data.forEach(product => { 
+       response.forEach(product => { 
         product.date = product.date.split('.')[0];
         products.push(product);
        })
