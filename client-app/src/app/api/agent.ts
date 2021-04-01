@@ -24,6 +24,5 @@ const Products = {
 
 
 export default{
-
-    Products
+   Products
 }
