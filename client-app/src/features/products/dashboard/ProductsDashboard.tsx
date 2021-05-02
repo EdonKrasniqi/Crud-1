@@ -1,15 +1,15 @@
-import React from 'react'
+import { observer } from 'mobx-react-lite'
+import React, { useContext } from 'react'
 import { Grid } from 'semantic-ui-react'
 import { IProduct } from '../../../app/models/product'
 import ProductDetails from '../details/ProductDetails'
 import ProductForm from '../form/ProductForm'
 import ProductList from './ProductList'
+import ProductStore from '../../../app/stores/productStore'
 
 interface IProps {
     products: IProduct[]
     selectProduct: (id: string) => void;
-    selectedProduct:IProduct | null;
-    editMode:boolean;
     setEditMode: (editMode:boolean) => void;
     setSelectedProduct: (product: IProduct | null) => void;
     createProduct: (product: IProduct) => void;
@@ -19,9 +19,7 @@ interface IProps {
 
  const ProductsDashboard: React.FC<IProps> = ({
      products, 
-     selectProduct, 
-     selectedProduct,
-     editMode,
+     selectProduct,
      setEditMode,
      setSelectedProduct,
      createProduct,
@@ -30,20 +28,19 @@ interface IProps {
 
     
     }) => {
+        const productStore = useContext(ProductStore);
+        const {editMode, selectedProduct} = productStore;
     return (
         <Grid>
             <Grid.Column width={10}>
-                <ProductList 
-                products={products} 
-                selectProduct={selectProduct}
+                <ProductList
                 deleteProduct={deleteProduct}
                 
                 />
             </Grid.Column>
             <Grid.Column width={6}>
                 {selectedProduct && !editMode &&(
-                <ProductDetails 
-                product={selectedProduct} 
+                <ProductDetails
                 setEditMode={setEditMode}
                 setSelectedProduct={setSelectedProduct}
                 />
@@ -60,4 +57,4 @@ interface IProps {
     )
 }
 
-export default ProductsDashboard
+export default observer (ProductsDashboard);

@@ -1,15 +1,20 @@
-import React, {useState, useEffect, Fragment } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Container } from 'semantic-ui-react';
 import { IProduct } from '../models/product';
 import NavBar from '../../features/nav/NavBar';
 import ProductsDashboard from '../../features/products/dashboard/ProductsDashboard';
 import agent from '../api/agent';
+import ProductStore from '../stores/productStore';
+import { observer } from 'mobx-react-lite';
 
 
-const App = () =>{
- 
+
+ const App = () =>{
+  const productStore = useContext (ProductStore);
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null); 
+  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(
+    null
+    ); 
   const [editMode, setEditMode] = useState(false);
 
 
@@ -45,27 +50,16 @@ const App = () =>{
   }
 
   useEffect(() => {
-    agent.Products.list()
-     .then((response) =>  {
-       let products: IProduct[] = [];
-       response.forEach(product => { 
-        product.date = product.date.split('.')[0];
-        products.push(product);
-       })
-      
-      setProducts(products)
-     });  
-  }, []); 
+    productStore.loadProducts();
+  }, [productStore]); 
 
     return (
       <Fragment>
         <NavBar openCreateForm={handleOpenCreateForm} />
         <Container style={{marginTop: '5em'}}>
         <ProductsDashboard 
-        products={products} 
-        selectProduct={handlerSelectProduct} 
-        selectedProduct={selectedProduct}
-        editMode={editMode}
+        products={productStore.products} 
+        selectProduct={handlerSelectProduct}
         setEditMode={setEditMode}
         setSelectedProduct={setSelectedProduct}
         createProduct={handleCreateProduct}
@@ -75,6 +69,7 @@ const App = () =>{
         </Container>
       </Fragment>  
     );
-};
+}
 
-export default App;
+
+export default observer(App);

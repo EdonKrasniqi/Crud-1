@@ -1,27 +1,29 @@
-import React from 'react'
+import { observer } from 'mobx-react-lite'
+import React, { useContext } from 'react'
 import { Button, Card,  Image } from 'semantic-ui-react'
 import { IProduct } from '../../../app/models/product'
-
+import ProductStore from '../../../app/stores/productStore'
 interface IProps {
-  product: IProduct
   setEditMode: (editMode: boolean) => void;
   setSelectedProduct:(product: IProduct | null) => void;
 }
- const ProductDetails: React.FC<IProps> = ({product, setEditMode, setSelectedProduct}) => {
+ const ProductDetails: React.FC<IProps> = ({ setEditMode, setSelectedProduct}) => {
+   const productStore = useContext(ProductStore);
+   const {selectedProduct: product}= productStore;
     return (
   <Card fluid>
-    <Image src={`/assets/categoryImages/${product.category}.png`} wrapped ui={false} />
+    <Image src={`/assets/categoryImages/${product!.category}.png`} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{product.title}</Card.Header>
+      <Card.Header>{product!.title}</Card.Header>   
       <Card.Meta>
-        <span >{product.date}</span>
+        <span >{product!.date}</span>
       </Card.Meta>
       <Card.Description>
-      {product.description}
-      {product.price}
+      {product!.description}
+      {product!.price}
       </Card.Description>
       <Card.Description>
-      {product.price}$
+      {product!.price}$
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
@@ -33,4 +35,4 @@ interface IProps {
   </Card>
     )
 }
-export default ProductDetails
+export default observer (ProductDetails);

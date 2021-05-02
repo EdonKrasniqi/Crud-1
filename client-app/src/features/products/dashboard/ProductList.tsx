@@ -1,20 +1,19 @@
-import React from 'react'
+import { observer } from 'mobx-react-lite'
+import React, { useContext } from 'react'
 import { Item, Button, Label, Segment, Image} from 'semantic-ui-react'
 import { IProduct } from '../../../app/models/product'
-
-interface IProps {
-    products: IProduct[];
-    selectProduct: (id: string) => void;
+import ProductStore from '../../../app/stores/productStore'
+interface IProps { 
     deleteProduct: (id: string) => void;
 
-}
+}  
 
 
  const ProductList: React.FC<IProps> = ({
-   products, 
-   selectProduct,
    deleteProduct 
   }) => {
+    const productStore = useContext(ProductStore);
+    const {products, selectProduct} = productStore;
     return (
 <Segment clearing>
     <Item.Group divided>
@@ -44,4 +43,4 @@ interface IProps {
     )
 }
 
-export default ProductList
+export default observer (ProductList);
