@@ -21,8 +21,17 @@ const Products = {
     update: (product: IProduct) => requests.put(`/products/${product.id}`,product),
     delete: (id: string) => requests.del(`/products/${id}`)
 }
+const Autos = {
 
+    list: (): Promise<IProduct[]> => requests.get('/auto'),
+    details:(id: string) => requests.get(`/auto/${id}`),
+    create: (product: IProduct) => requests.post('/auto', product),
+    update: (product: IProduct) => requests.put(`/auto/${product.id}`,product),
+    delete: (id: string) => requests.del(`/auto/${id}`)
+}
 
 export default{
-   Products
+   Products,
+   Autos
+   
 }

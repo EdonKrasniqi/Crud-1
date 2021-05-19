@@ -1,7 +1,12 @@
 body {
   background-color:#E1EBEE !important;
 }
-
+.ui.header:first-child {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: white;
+  margin-right: 100px;
+}
 .ui.inverted.top.fixed.menu {
 
   background-image: linear-gradient(
@@ -17,7 +22,7 @@ body {
 }
 
 .ui.segment:last-child {
-  background-color: #20B2AA;
+  background-color: #eeeeee;
   border: 0px;
 }
 .ui.items>.item .content img {
@@ -25,9 +30,9 @@ body {
 }
 
 .ui.card>.content {
-  background-color: #20B2AA;
+  background-color: #eeeeee;
 }
 .ui.card>.extra, .ui.cards>.card>.extra {
-background: #20B2AA;
+background: #eeeeee;
 
 }

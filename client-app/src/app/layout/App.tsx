@@ -1,75 +1,39 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Container } from 'semantic-ui-react';
-import { IProduct } from '../models/product';
-import NavBar from '../../features/nav/NavBar';
-import ProductsDashboard from '../../features/products/dashboard/ProductsDashboard';
-import agent from '../api/agent';
-import ProductStore from '../stores/productStore';
-import { observer } from 'mobx-react-lite';
-
-
-
- const App = () =>{
-  const productStore = useContext (ProductStore);
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(
-    null
-    ); 
-  const [editMode, setEditMode] = useState(false);
-
-
-  const handlerSelectProduct = (id: string) =>{
-     setSelectedProduct(products.filter(a => a.id === id)[0])
-     setEditMode(false);
-  }
-  const handleOpenCreateForm = () => {
-    setSelectedProduct(null);
-    setEditMode(true);
-  }
-
-  const handleCreateProduct = (product: IProduct) => {
-    agent.Products.create(product).then(() => {
-      setProducts([...products,product])
-      setSelectedProduct(product);
-      setEditMode(false);
-    })
-  }
-
-  const handleEditProduct = (product: IProduct) => {
-    agent.Products.update(product).then(() => {
-      setProducts ([...products.filter(a =>a.id !== product.id), product])
-      setSelectedProduct(product);
-      setEditMode(false);
-    })
-  }
-
-  const handleDeleteProduct = (id: string) => {
-    agent.Products.delete(id).then(() => {
-      setProducts([...products.filter(a => a.id !== id)])
-    })
-  }
+import React, { Fragment, useContext, useEffect } from "react";
+import { Container } from "semantic-ui-react";
+import NavBar from "../../features/nav/NavBar";
+import ProductsDashboard from "../../features/products/dashboard/ProductsDashboard";
+import ProductStore from "../stores/productStore";
+import { observer } from "mobx-react-lite";
+import { Route } from "react-router";
+import { HomePage } from "../../features/home/HomePage";
+import ProductForm from "../../features/products/form/ProductForm";
+import Accessories from "../../features/home/Accessories";
+import NavBarAdmin from "../../features/nav/NavBarAdmin";
+import ProductDetails from "../../features/products/details/ProductDetails";
+import AccessoriesDetail from "../../features/home/AccessoriesDetail";
+import {AdminDashboard} from "../../features/admin/AdminDashboard";
+const App = () => {
+  const productStore = useContext(ProductStore);
 
   useEffect(() => {
     productStore.loadProducts();
-  }, [productStore]); 
+  }, [productStore]);
 
-    return (
-      <Fragment>
-        <NavBar openCreateForm={handleOpenCreateForm} />
-        <Container style={{marginTop: '5em'}}>
-        <ProductsDashboard 
-        products={productStore.products} 
-        selectProduct={handlerSelectProduct}
-        setEditMode={setEditMode}
-        setSelectedProduct={setSelectedProduct}
-        createProduct={handleCreateProduct}
-        editProduct={handleEditProduct}
-        deleteProduct={handleDeleteProduct}
-        />
-        </Container>
-      </Fragment>  
-    );
-}
-
+  return (
+    <Fragment>
+      <Container style={{ marginTop: "5em" }}>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/" component={NavBar} />
+        <Route exact path="/accesories" component={Accessories} />
+        <Route path="/accesories/:id" component={AccessoriesDetail} />
+        <Route path={["/admin/createProducts", '/admin/manage/:id']} component={ProductForm} />
+        <Route path="/admin" component={NavBarAdmin} />
+        <Route exact path="/admin" component={AdminDashboard} />
+        <Route exact path="/admin/manageaccesories" component={ProductsDashboard} />
+        <Route path="/admin/manageaccesories/:id" component={ProductDetails} />
+      </Container>
+    </Fragment>
+  );
+};
 
 export default observer(App);
