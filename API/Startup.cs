@@ -1,4 +1,6 @@
+using API.Extensions;
 using Application.Products;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +15,8 @@ namespace API
 {
     public class Startup
     {
+        private IConfiguration _config;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,9 +38,13 @@ namespace API
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
                 });
             });
+            
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddControllers();
-            
+            services.AddControllers().AddFluentValidation(config =>{
+                config.RegisterValidatorsFromAssemblyContaining<Create>();
+            });
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +61,7 @@ namespace API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

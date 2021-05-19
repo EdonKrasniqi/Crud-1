@@ -2,14 +2,28 @@ using System.Linq;
 using System.Collections.Generic;
 using Domain;
 using System;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace Presistence.Migrations
 
 {
     public class Seed
     {
-        public static void SeedData(DataContext context)
+        public static async Task SeedDataAsync(DataContext context, UserManager<AppUser> userManager)
         {
+            if(!userManager.Users.Any()){
+                var users = new List<AppUser>{
+                    new AppUser{DisplayName= "Bob", UserName= "bob", Email= "bob@test.com"},
+                    new AppUser{DisplayName= "Tom", UserName= "tom", Email= "tom@test.com"},
+                    new AppUser{DisplayName= "Don", UserName= "don", Email= "don@test.com"},
+                };
+                foreach (var user in users)
+                {
+                    await userManager.CreateAsync(user, "Pa$$w0rd");
+                }
+            }
+
             if(!context.Products.Any())
             {
                 var products = new List<Product>
@@ -107,6 +121,11 @@ namespace Presistence.Migrations
                 context.Products.AddRange(products);
                 context.SaveChanges();
             }
+        }
+
+        public static Task SeedData(DataContext context, UserManager<AppUser> userManager)
+        {
+            throw new NotImplementedException();
         }
     }
 }
