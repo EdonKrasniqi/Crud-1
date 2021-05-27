@@ -1,10 +1,17 @@
 import React, { FormEvent, useContext, useEffect, useState } from "react";
-import { Button, Form, Segment } from "semantic-ui-react";
+import { Button, FormField, Header, Label, Segment } from "semantic-ui-react";
 import { IProduct } from "../../../app/models/product";
 import { v4 as uuid } from "uuid";
 import ProductStore from "../../../app/stores/productStore";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import MyTextInput from "../../../app/common/form/MyTextInput";
+import MyTextArea from "../../../app/common/form/MyTextArea";
+import MySelectInput from "../../../app/common/form/MySelectInput";
+import { categoryOptions } from "../../../app/common/options/categoryOptions";
+import MyDateInput from "../../../app/common/form/MyDateInput";
 
 interface DetailParams {
   id: string;
@@ -33,11 +40,19 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
     title: "",
     category: "",
     description: "",
-    date: "",
+    date: null,
     price: ""
   });
 
-  const handleSubmit = () => {
+  const validationSchema = Yup.object({
+    title: Yup.string().required('The products title is required'),
+    description: Yup.string().required('The products description is required'),
+    category: Yup.string().required('Image name is required'),
+    date: Yup.string().required(),
+    price: Yup.string().required()
+  })
+
+  function handleFormSubmit(product: IProduct) {
     if (product.id.length === 0) {
       let newProduct = {
         ...product,
@@ -49,58 +64,43 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
     }
   };
 
-  const handleInputChange = (
-    event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.currentTarget;
-    setProduct({ ...product, [name]: value });
-  };
 
   return (
     <Segment clearing>
-      <Form onSubmit={handleSubmit}>
-        <Form.Input
-          onChange={handleInputChange}
-          name="title"
-          placeholder="Title"
-          value={product.title}
-        />
-        <Form.TextArea
-          onChange={handleInputChange}
-          name="description"
-          rows={2}
-          placeholder="Description"
-          value={product.description}
-        />
-        <Form.Input
-          onChange={handleInputChange}
-          name="category"
-          placeholder="Image Name"
-          value={product.category}
-        />
-        <Form.Input
-          onChange={handleInputChange}
-          name="date"
-          type="datetime-local"
-          placeholder="Date"
-          value={product.date}
-        />
-        <Form.Input
-          onChange={handleInputChange}
-          name="price"
-          placeholder="Price"
-          value={product.price}
-        />
-        <Button.Group widths={2}>
-          <Button positive type="submit" content="Add" />
-          <Button
-            onClick={() => history.push(`/admin/manageaccesories/${product.id}`)}
-            basic
-            color="grey"
-            content="Back"
-          />
-        </Button.Group>
-      </Form>
+      <Header content='Product Details' ub color='teal'/>
+      <Formik 
+      validationSchema={validationSchema}
+      enableReinitialize 
+      initialValues={product} 
+      onSubmit={values => handleFormSubmit(values)}>
+        {({ handleSubmit, isValid, isSubmitting, dirty }) => (
+          <Form className='ui form' onSubmit={handleSubmit} autoComplete="off">
+            <MyTextInput name='title' placeholder='Title' />
+
+            <MyTextArea rows={3} name="description" placeholder="Description"/>
+            <MySelectInput options={categoryOptions} name="category" placeholder="Image Name"/>
+            <MyDateInput 
+              name="date" 
+              placeholderText="Date"
+              showTimeSelect
+              timeCaption='time'
+              dateFormat='MMMM d, yyyy h:mm aa'
+            />
+            <Header content='Price Details' ub color='teal'/>
+            <MyTextInput name="price" placeholder="Price"/>
+            <Button.Group widths={2}>
+            <Button 
+              disabled={isSubmitting || !dirty || !isValid}
+              positive type="submit" 
+              content="Add" 
+            />
+            <Button onClick={() => history.push(`/admin/manageaccesories/${product.id}`)} basic color="grey" content="Back"/>
+            </Button.Group>
+        </Form>
+        )}
+      
+        
+        </Formik>
     </Segment>
   );
 };

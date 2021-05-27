@@ -1,7 +1,8 @@
-import { action, makeObservable, observable, computed, configure, runInAction } from "mobx";
+import { action, observable, computed, configure, runInAction, makeAutoObservable, makeObservable } from "mobx";
 import { createContext } from "react";
 import agent from "../api/agent";
 import { IProduct } from "../models/product";
+import {format} from 'date-fns';
 
 configure({ enforceActions: "always" });
 
@@ -24,7 +25,7 @@ class ProductStore {
     try {
       const products = await agent.Products.list();
       products.forEach((product) => {
-        product.date = product.date.split(".")[0];
+        product.date = product.date;
         this.productRegistry.set(product.id, product);
       });
     }catch (error) {
@@ -75,6 +76,7 @@ class ProductStore {
   @action editProduct = async (product: IProduct) => {
     try {
       await agent.Products.update(product);
+      product.date = new Date(product.date!);
       this.productRegistry.set(product.id, product);
       this.product = product;
       this.editMode = false;

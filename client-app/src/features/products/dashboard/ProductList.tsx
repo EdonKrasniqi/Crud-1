@@ -1,8 +1,10 @@
 import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Item, Button, Segment, Image,} from "semantic-ui-react";
+import { Item, Button, Segment, Image, Icon,} from "semantic-ui-react";
 import ProductStore from "../../../app/stores/productStore";
+import { IProduct } from '../../../app/models/product';
+import {format} from 'date-fns';
 
 const ProductList: React.FC = ({}) => {
   const productStore = useContext(ProductStore);
@@ -40,8 +42,16 @@ const ProductList: React.FC = ({}) => {
           
         ))}
       </Item.Group>
-      </Segment>
+      {/* <Segment>
+        <span>
+          <Icon name='clock' />{format(products.date!, 'dd MMM yyyy h:mm aa')}
+          <Icon name='marker' />{products.price}
+        </span>marker
+      </Segment> */}
+    </Segment>
+      
   );
+    
 };
 
 export default observer(ProductList);
