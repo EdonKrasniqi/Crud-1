@@ -10,5 +10,7 @@ namespace Presistence
         {
         }
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
     }
 }

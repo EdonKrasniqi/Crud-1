@@ -1,5 +1,6 @@
 using API.Extensions;
 using Application.Products;
+using Application.Contacts;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -42,6 +43,7 @@ namespace API
             });
             
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddMediatR(typeof(CList.Handler).Assembly);
             services.AddControllers();
             services.AddControllers(opt =>
             {
@@ -49,6 +51,7 @@ namespace API
                 opt.Filters.Add(new AuthorizeFilter(policy));
             }).AddFluentValidation(config =>{
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
+                config.RegisterValidatorsFromAssemblyContaining<CCreate>();
             });
             services.AddIdentityServices(_config);
         }

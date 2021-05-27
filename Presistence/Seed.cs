@@ -10,7 +10,7 @@ namespace Presistence.Migrations
 {
     public class Seed
     {
-        public static async Task SeedDataAsync(DataContext context, UserManager<AppUser> userManager)
+        public static async Task SeedDataAsync(DataContext context, UserManager<AppUser> userManager )
         {
             if(!userManager.Users.Any()){
                 var users = new List<AppUser>{
@@ -24,6 +24,25 @@ namespace Presistence.Migrations
                 }
             }
 
+            if(!context.Contacts.Any()){
+                var contacts = new List<Contact>{
+                    new Contact 
+                    {
+                        Name ="Edon Krasniqi",
+                        Email = "edon@test.com",
+                        Message = "Hi"
+                    },
+                     new Contact 
+                    {
+                        Name ="Florentina Dili",
+                        Email = "edon@test.com",
+                        Message = "Hi"
+                    }
+                };
+                context.Contacts.AddRange(contacts);
+                context.SaveChanges();
+            }
+            
             if(!context.Products.Any())
             {
                 var products = new List<Product>
@@ -117,10 +136,11 @@ namespace Presistence.Migrations
                         Price = 132 ,
                     }
                 };
-
+                
                 context.Products.AddRange(products);
                 context.SaveChanges();
             }
+            
         }
 
         public static Task SeedData(DataContext context, UserManager<AppUser> userManager)
