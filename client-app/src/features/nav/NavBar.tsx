@@ -20,7 +20,7 @@ const NavBar: React.FC = ({}) => {
       <Menu.Item>
         <Button
            positive
-           content="LogIn"
+           content="LogIn"  as={NavLink} exact to="/login"
         />
         <Button
            grey

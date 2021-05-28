@@ -1,19 +1,23 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Router } from "react-router-dom";
 import "./app/layout/styles.css";
 import 'react-datepicker/dist/react-datepicker.css';
 import App from "./app/layout/App";
 import reportWebVitals from "./reportWebVitals";
 import "semantic-ui-css/semantic.min.css";
 import ScrollToTop from "./app/layout/ScrollToTop";
+import {createBrowserHistory} from 'history';
+
+export const history = createBrowserHistory();
+
 
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={history}>
   <ScrollToTop>
     <App/>
   </ScrollToTop>
-  </BrowserRouter>,
+  </Router>,
     
   document.getElementById("root")
 );

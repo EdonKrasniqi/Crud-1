@@ -6,7 +6,7 @@ import {format} from 'date-fns';
 
 configure({ enforceActions: "always" });
 
-class ProductStore {
+ class ProductStore {
   @observable productRegistry = new Map();
   @observable products: IProduct[] = [];
   @observable product: IProduct | null = null;

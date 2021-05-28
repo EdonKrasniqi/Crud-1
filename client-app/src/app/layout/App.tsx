@@ -12,6 +12,7 @@ import NavBarAdmin from "../../features/nav/NavBarAdmin";
 import ProductDetails from "../../features/products/details/ProductDetails";
 import AccessoriesDetail from "../../features/home/AccessoriesDetail";
 import {AdminDashboard} from "../../features/admin/AdminDashboard";
+import LoginForm from "../../features/users/LoginForm";
 const App = () => {
   const productStore = useContext(ProductStore);
 
@@ -31,6 +32,7 @@ const App = () => {
         <Route exact path="/admin" component={AdminDashboard} />
         <Route exact path="/admin/manageaccesories" component={ProductsDashboard} />
         <Route path="/admin/manageaccesories/:id" component={ProductDetails} />
+        <Route path="/login" component={LoginForm} />
       </Container>
     </Fragment>
   );

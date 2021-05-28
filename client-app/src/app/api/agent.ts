@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { IProduct } from '../models/product';
+import { User, UserFormValues } from '../models/user';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -30,8 +31,16 @@ const Autos = {
     delete: (id: string) => requests.del(`/auto/${id}`)
 }
 
+const Account = {
+    current: (): Promise<User> => requests.get('/account'), 
+    login: (user: UserFormValues): Promise<User> => requests.post('/account/login', user),
+    register:(user: UserFormValues): Promise<User> => requests.post('/account/register', user),
+}
+
+
 export default{
    Products,
-   Autos
+   Autos,
+   Account
    
 }
