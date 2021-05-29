@@ -39,7 +39,7 @@ const NavBar: React.FC = ({}) => {
         <Menu.Item>
         <Button
            positive
-           content="LogIn" onClick={() => modalStore.openModal(<LoginForm />)} exact to="/login"
+           content="LogIn" onClick={() => modalStore.openModal(<LoginForm />)} exact to="/login" style={{marginRight: 5}}
         />
         <Button
            content="Register" onClick={() => modalStore.openModal(<RegisterForm/>)} exact to="/Register"
