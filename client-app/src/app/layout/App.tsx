@@ -13,14 +13,27 @@ import ProductDetails from "../../features/products/details/ProductDetails";
 import AccessoriesDetail from "../../features/home/AccessoriesDetail";
 import {AdminDashboard} from "../../features/admin/AdminDashboard";
 import LoginForm from "../../features/users/LoginForm";
+import { useStore } from "../stores/store";
+import LoadingComponent from "./LoadingComponent";
+import ModalContainer from "../common/modals/modalContainer";
 const App = () => {
   const productStore = useContext(ProductStore);
+  const {commonStore,userStore} = useStore();
 
   useEffect(() => {
     productStore.loadProducts();
-  }, [productStore]);
+    if(commonStore.token){
+      userStore.getUser().finally(() => commonStore.setAppLoaded());
+    }else{
+      commonStore.setAppLoaded();
+    }
+  }, [productStore,commonStore,userStore]);
+
+  if(!commonStore.appLoaded) return <LoadingComponent content='Loading...'/>
 
   return (
+    <>
+    <ModalContainer/>
     <Fragment>
       <Container style={{ marginTop: "5em" }}>
         <Route exact path="/" component={HomePage} />
@@ -35,6 +48,7 @@ const App = () => {
         <Route path="/login" component={LoginForm} />
       </Container>
     </Fragment>
+    </>
   );
 };
 
