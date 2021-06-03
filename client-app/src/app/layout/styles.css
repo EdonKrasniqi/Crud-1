@@ -41,3 +41,9 @@ background: #eeeeee;
 .react-datepicker-wrapper {
   width: 100%;
 }
+
+.ui.fluid.card {
+  width: 50%;
+  height: auto;
+  max-width: 9999px;
+}
