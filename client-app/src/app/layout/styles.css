@@ -12,9 +12,9 @@ body {
 
   background-image: linear-gradient(
     135deg,
-    rgb(214, 135, 8) 0%,
-    rgb(161, 112, 47) 69%,
-    rgb(214, 135, 8) 89%
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 69%,
+    rgb(0, 0, 0) 89%
   ) !important;
 } 
 
