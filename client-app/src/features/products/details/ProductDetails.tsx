@@ -11,11 +11,11 @@ import ProductStore from '../../../app/stores/productStore'
 
  const ProductDetails: React.FC<RouteComponentProps<DetailParams>> = ({match,history}) => {
    const productStore = useContext(ProductStore);
-   const {product, openEditForm,cancelSelectedProduct,loadProduct}= productStore;
+   const {product,loadProduct}= productStore;
     
    useEffect(() => {
      loadProduct(match.params.id)
-   },[loadProduct])
+   },[loadProduct,match.params.id])
    
    if(!product) return <h1>Products</h1>
    return (

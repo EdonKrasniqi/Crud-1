@@ -44,10 +44,9 @@ const Account = {
     register:(user: UserFormValues): Promise<User> => requests.post('/account/register', user),
 }
 
-
-export default{
-   Products,
-   Autos,
-   Account
-   
+const agent ={
+    Products,
+    Autos,
+    Account
 }
+export default agent;

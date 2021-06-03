@@ -1,11 +1,11 @@
-import React, { FormEvent, useContext, useEffect, useState } from "react";
-import { Button, FormField, Header, Label, Segment } from "semantic-ui-react";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Header, Segment } from "semantic-ui-react";
 import { IProduct } from "../../../app/models/product";
 import { v4 as uuid } from "uuid";
 import ProductStore from "../../../app/stores/productStore";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from "../../../app/common/form/MyTextInput";
 import MyTextArea from "../../../app/common/form/MyTextArea";
@@ -34,7 +34,7 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
         () => initialFormState && setProduct(initialFormState));
     }
 
-  }, [])
+  }, [initialFormState,loadProduct,match.params.id])
   const [product, setProduct] = useState<IProduct>({
     id: "",
     title: "",

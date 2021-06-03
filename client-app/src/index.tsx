@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import "./app/layout/styles.css";
 import 'react-datepicker/dist/react-datepicker.css';
 import App from "./app/layout/App";

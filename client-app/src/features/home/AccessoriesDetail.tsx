@@ -14,7 +14,7 @@ import ProductStore from '../../app/stores/productStore'
     
    useEffect(() => {
      loadProduct(match.params.id)
-   },[loadProduct])
+   },[loadProduct,match.params.id])
    
    if(!product) return <h1>Products</h1>
    return (

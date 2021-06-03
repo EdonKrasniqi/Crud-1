@@ -1,8 +1,7 @@
-import { action, observable, computed, configure, runInAction, makeAutoObservable, makeObservable } from "mobx";
+import { action, observable, computed, configure, runInAction, makeObservable } from "mobx";
 import { createContext } from "react";
 import agent from "../api/agent";
 import { IProduct } from "../models/product";
-import {format} from 'date-fns';
 
 configure({ enforceActions: "always" });
 
@@ -25,7 +24,6 @@ configure({ enforceActions: "always" });
     try {
       const products = await agent.Products.list();
       products.forEach((product) => {
-        product.date = product.date;
         this.productRegistry.set(product.id, product);
       });
     }catch (error) {

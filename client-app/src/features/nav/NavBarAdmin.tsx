@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Container, Header, Menu } from "semantic-ui-react";
 
-const NavBarAdmin: React.FC = ({}) => {
+const NavBarAdmin: React.FC = () => {
   return (
     <Menu fixed="top" inverted>
       <Header as='h2' content='OneStopBuy' style={{marginTop: 10}} />
