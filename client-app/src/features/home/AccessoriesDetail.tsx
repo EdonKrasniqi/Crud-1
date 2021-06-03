@@ -18,19 +18,18 @@ import ProductStore from '../../app/stores/productStore'
    
    if(!product) return <h1>Products</h1>
    return (
-  <Card fluid>
+
+    
+  <Card style={{width:500}} centered color="red">
     <Image src={`/assets/categoryImages/${product!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{product!.title}</Card.Header>   
-      <Card.Meta><span>{product!.date}</span></Card.Meta>
-      <Card.Description>
-      {product!.description}</Card.Description>
+      <Card.Description>{product!.description}</Card.Description>
       <Card.Description>{product!.price}$</Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <Button.Group widths={3}>
-          <Button basic color='green' content='Buy Now'/>
-          <Button basic color='blue' content='Add to Cart'/>
+      <Button.Group widths={2}>
+          <Button onClick={() => history.push('/orderform')} basic color='green' content='Buy Now'/>
           <Button onClick={() => history.push('/accesories')} basic color='red' content='Back'/>
       </Button.Group>
     </Card.Content>
