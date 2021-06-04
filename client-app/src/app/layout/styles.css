@@ -45,4 +45,50 @@ background: #eeeeee;
 .ui.fluid.card {
   width: 60%;
   height: auto;
+  max-width: 9999px;
+}
+.price{
+  position: absolute;
+  font-size: 24px;
+  margin-left: 37%;
+  margin-top: 10px;
+}
+.cardP{
+  background-color: #f0f0f0 !important;
+  height: 400px !important;
+}
+.cardP:hover{
+  width: 272px !important;
+  background-color: white !important;
+}
+
+.ProductName:hover{
+  color: black !important;
+  text-decoration: underline !important;
+  
+}
+.ProductName{
+  font-size: medium !important;
+  margin-left: 37% !important;
+  margin-top: 5px !important;
+}
+
+
+.cart{
+    position: absolute !important;
+    margin-top: 70px !important;
+    width: 90% !important;
+    left:10px !important;
+    height: 40px !important;
+}
+
+.details{
+  color: #f0f0f0;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 26%;
+
+}
+.details:hover{
+  color: darkgrey;
 }

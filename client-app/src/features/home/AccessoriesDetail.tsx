@@ -18,8 +18,6 @@ import ProductStore from '../../app/stores/productStore'
    
    if(!product) return <h1>Products</h1>
    return (
-
-    
   <Card style={{width:500}} centered color="red">
     <Image src={`/assets/categoryImages/${product!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
