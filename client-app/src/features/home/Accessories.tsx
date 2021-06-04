@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Item, Button, Segment, Image, Grid, Card,} from 'semantic-ui-react'
+import { Item, Button, Segment, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
 import ProductStore from '../../app/stores/productStore'
 
  const ProductList: React.FC= () => {
@@ -9,21 +9,32 @@ import ProductStore from '../../app/stores/productStore'
     const {productsByDate,} = productStore;
     return (
       <Grid>
-      
+      <Dropdown style={{marginLeft:1022,marginBottom:10}}
+    text='Filter'
+    icon='filter'
+    floating
+    labeled
+    button
+    className='icon'
+  >
+    <Dropdown.Menu>
+      <Dropdown.Header icon='tags' content='Filter by price' />
+      <Dropdown.Item>Relevance</Dropdown.Item>
+      <Dropdown.Item>Price:Low to High</Dropdown.Item>
+      <Dropdown.Item>Price:High to Low</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
     <Card.Group divided>
         {productsByDate.map(products => (
-        <Card color='orange' key={products.id} style={{width: 270}}>
+        <Card className='cardP'  key={products.id} style={{width: 270}}>
           <Card.Content>
-          <Image src={`/assets/categoryImages/${products.category}.jpg`} />
-            <Card.Header >{products.title}</Card.Header>
-            <Card.Meta>{products.date}</Card.Meta>
-            <Card.Description>
-              <div>{products.description}</div>
-              <div>{products.price}$</div>
-            </Card.Description>
+          <Image  as={Link} to={`/accesories/${products.id}`} src={`/assets/categoryImages/${products.category}.jpg`} />
+            <Card.Header className='ProductName' as={Link} to={`/accesories/${products.id}`} >{products.title}</Card.Header>
             <Card.Content extra>
-                <Button as={Link} to={`/accesories/${products.id}`}
-                   floated='right' content='View' color='blue'/>
+            <div className='price'>{products.price} €</div>
+            <Card.Description  as={Link} to={`/accesories/${products.id}`}  className='details'>Look the details</Card.Description>
+                <Button className='cart' as={Link} to={`/orderForm`}
+                   floated='right' icon='add to cart' color='orange'/>
             </Card.Content>
           </Card.Content>
         </Card>
