@@ -1,5 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 import { IProduct } from '../models/product';
+
+import { ILibrary } from '../models/library';
+import { IClothing } from '../models/clothing';
+import { IHealth } from '../models/health';
+
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -44,9 +49,56 @@ const Account = {
     register:(user: UserFormValues): Promise<User> => requests.post('/account/register', user),
 }
 
+//qitu spo di a duhet edhe qitu te product-> me bo library
+//kur e kom bo library mka dal error
+
+//--- u kry kjo
+
+const Library = {
+
+    list: (): Promise<ILibrary[]> => requests.get('/library'),
+    details:(id: string) => requests.get(`/library/${id}`),
+    create: (library: ILibrary) => requests.post('/library', library),
+    update: (library: ILibrary) => requests.put(`/library/${library.id}`,library),
+    delete: (id: string) => requests.del(`/library/${id}`)
+}
+
+
+
+//t
+const Clothing = {
+
+    list: (): Promise<IClothing[]> => requests.get('/clothing'),
+    details:(id: string) => requests.get(`/clothing/${id}`),
+    create: (clothing: IClothing) => requests.post('/clothing', clothing),
+    update: (clothing: IClothing) => requests.put(`/clothing/${clothing.id}`,clothing),
+    delete: (id: string) => requests.del(`/clothing/${id}`)
+}
+
+
+
+//t
+const Health = {
+
+    list: (): Promise<IHealth[]> => requests.get('/health'),
+    details:(id: string) => requests.get(`/health/${id}`),
+    create: (health: IHealth) => requests.post('/health', health),
+    update: (health: IHealth) => requests.put(`/health/${health.id}`,health),
+    delete: (id: string) => requests.del(`/health/${id}`)
+}
+
+
+
+
+
+
 const agent ={
     Products,
     Autos,
-    Account
+    Account,
+    Library,
+    Clothing,
+    Health,
+
 }
 export default agent;
