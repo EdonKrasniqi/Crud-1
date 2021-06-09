@@ -1,12 +1,3 @@
-//ERRORI OSHT TE LIBRARYS
-//Duhet me u bo diqka si te Products -> Librarys
-//spo vazhdoj me tjerat 
-
-
-/////////////////////ERRORRR ->>>>>>>>> 33
-
-
-
 import { action, observable, computed, configure, runInAction, makeObservable } from "mobx";
 import { createContext } from "react";
 import agent from "../api/agent";
@@ -29,8 +20,8 @@ configure({ enforceActions: "always" });
       .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
   }
 
-  /*
-  @action loadLibrary = async () => {
+
+  @action loadLibrarys = async () => {
     try {
       const librarys = await agent.Library.list();
       librarys.forEach((library) => {
@@ -39,8 +30,8 @@ configure({ enforceActions: "always" });
     }catch (error) {
       console.log(error);
     }
-  }; 
-  */
+  };
+  
 
   @action loadLibrary = async (id: string) => {
     let library = this.getLibrary(id);

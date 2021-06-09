@@ -1,38 +1,47 @@
 import { observer } from 'mobx-react-lite'
-import React, { useContext, useEffect } from 'react'
-import { RouteComponentProps } from 'react-router'
-import { Button, Card,  Image } from 'semantic-ui-react'
-import LibraryStore from '../../app/stores/libraryStore'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Item, Button, Segment, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
+import LibraryStore from '../../../app/stores/libraryStore'
 
- interface DetailParams {
-   id: string
- }
-
- const LibraryDetails: React.FC<RouteComponentProps<DetailParams>> = ({match,history}) => {
-   const libraryStore = useContext(LibraryStore);
-   const {library,loadLibrary}= libraryStore;
-    
-   useEffect(() => {
-     loadLibrary(match.params.id)
-   },[loadLibrary,match.params.id])
-   
-   if(!library) return <h1>Librarys</h1>
-   return (
-  <Card style={{width:500}} centered color="red">
-    <Image src={`/assets/categoryImages/${library!.category}.jpg`} wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>{library!.title}</Card.Header>   
-      <Card.Description>{library!.description}</Card.Description>
-      <Card.Description>{library!.price}$</Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <Button.Group widths={2}>
-          <Button onClick={() => history.push('/orderform')} basic color='green' content='Buy Now'/>
-          <Button onClick={() => history.push('/accesories')} basic color='red' content='Back'/>
-      </Button.Group>
-    </Card.Content>
-  </Card>
+ const LibraryList: React.FC= () => {
+    const libraryStore = useContext(LibraryStore);
+    const {librarysByDate} = libraryStore;
+    return (
+      <Grid>
+      <Dropdown style={{marginLeft:1022,marginBottom:10}}
+    text='Filter'
+    icon='filter'
+    floating
+    labeled
+    button
+    className='icon'
+  >
+    <Dropdown.Menu>
+      <Dropdown.Header icon='tags' content='Filter by price' />
+      <Dropdown.Item>Relevance</Dropdown.Item>
+      <Dropdown.Item>Price:Low to High</Dropdown.Item>
+      <Dropdown.Item>Price:High to Low</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+    <Card.Group divided>
+        {librarysByDate.map(librarys => (
+        <Card className='cardP'  key={librarys.id} style={{width: 270}}>
+          <Card.Content>
+          <Image  as={Link} to={`/accesories/${librarys.id}`} src={`/assets/categoryImages/${librarys.category}.jpg`} />
+            <Card.Header className='ProductName' as={Link} to={`/accesories/${librarys.id}`} >{librarys.title}</Card.Header>
+            <Card.Content extra>
+            <div className='price'>{librarys.price} €</div>
+            <Card.Description  as={Link} to={`/accesories/${librarys.id}`}  className='details'>Look the details</Card.Description>
+                <Button className='cart' as={Link} to={`/orderForm`}
+                   floated='right' icon='add to cart' color='orange'/>
+            </Card.Content>
+          </Card.Content>
+        </Card>
+        ))}
+    </Card.Group>
+    </Grid>
     )
 }
-export default observer (LibraryDetails);  
 
+export default observer (LibraryList);

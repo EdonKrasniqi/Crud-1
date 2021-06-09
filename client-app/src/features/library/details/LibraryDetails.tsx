@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { Link} from 'react-router-dom'
 import { Button, Card,  Image } from 'semantic-ui-react'
-import Librarytore from '../../../app/stores/librarystore'
+import Librarytore from '../../../app/stores/libraryStore'
 
  interface DetailParams {
    id: string
@@ -32,7 +32,7 @@ import Librarytore from '../../../app/stores/librarystore'
     <Card.Content extra>
       <Button.Group widths={2}>
           <Button as={Link} to={`/admin/manage/${library.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/manageaccesories')} basic color='grey' content='Back'/>
+          <Button onClick={() => history.push('/admin/managelibrarys')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

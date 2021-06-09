@@ -25,7 +25,7 @@ const LibraryList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/manageaccesories/${librarys.id}`}
+                  to={`/admin/managelibrarys/${librarys.id}`}
                   floated="right"
                   content="View"
                   color="blue"

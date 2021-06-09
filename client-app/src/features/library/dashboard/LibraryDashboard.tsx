@@ -12,7 +12,7 @@ const LibraryDashboard: React.FC = () => {
     positive
     content="Add Library"
   />
-  <ProductList />
+  <LibraryList />
   </div>
     
        

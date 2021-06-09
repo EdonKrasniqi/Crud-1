@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import { IProduct } from '../models/product';
-
 import { ILibrary } from '../models/library';
 import { IClothing } from '../models/clothing';
 import { IHealth } from '../models/health';
@@ -98,7 +97,7 @@ const agent ={
     Account,
     Library,
     Clothing,
-    Health,
+    Health
 
 }
 export default agent;

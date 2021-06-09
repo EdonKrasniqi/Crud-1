@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useContext, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { Button, Card,  Image } from 'semantic-ui-react'
-import ProductStore from '../../app/stores/productStore'
+import ProductStore from '../../../app/stores/productStore'
 
  interface DetailParams {
    id: string

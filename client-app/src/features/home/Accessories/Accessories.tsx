@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Item, Button, Segment, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
-import ProductStore from '../../app/stores/productStore'
+import ProductStore from '../../../app/stores/productStore'
 
  const ProductList: React.FC= () => {
     const productStore = useContext(ProductStore);
