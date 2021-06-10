@@ -17,14 +17,13 @@ import ProductStore from '../../../app/stores/productStore'
      loadProduct(match.params.id)
    },[loadProduct,match.params.id])
    
-   if(!product) return <h1>Products</h1>
+   if(!product) return <h1>Error 404</h1>
    return (
      
   <Card fluid>
     <Image src={`/assets/categoryImages/${product!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{product!.title}</Card.Header>   
-      <Card.Meta><span>{product!.date}</span></Card.Meta>
+      <Card.Header>{product!.title}</Card.Header>
       <Card.Description>
       {product!.description}</Card.Description>
       <Card.Description>{product!.price}$</Card.Description>

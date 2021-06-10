@@ -52,7 +52,7 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
     price: Yup.string().required()
   })
 
-  function handleFormSubmit(product: IProduct) {
+  const handleFormSubmit = (product: IProduct) => {
     if (product.id.length === 0) {
       let newProduct = {
         ...product,
@@ -65,14 +65,15 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
   };
 
 
+
   return (
     <Segment clearing>
-      <Header content='Product Details' ub color='teal'/>
+      <Header content='Product Details' color='teal'/>
       <Formik 
       validationSchema={validationSchema}
       enableReinitialize 
       initialValues={product} 
-      onSubmit={values => handleFormSubmit(values)}>
+      onSubmit={values=> handleFormSubmit(values)}>
         {({ handleSubmit, isValid, isSubmitting, dirty }) => (
           <Form className='ui form' onSubmit={handleSubmit} autoComplete="off">
             <MyTextInput name='title' placeholder='Title' />
@@ -82,11 +83,9 @@ const ProductForm: React.FC<RouteComponentProps<DetailParams>> = ({
             <MyDateInput 
               name="date" 
               placeholderText="Date"
-              showTimeSelect
-              timeCaption='time'
               dateFormat='MMMM d, yyyy h:mm aa'
             />
-            <Header content='Price Details' ub color='teal'/>
+            <Header content='Price Details' color='teal'/>
             <MyTextInput name="price" placeholder="Price"/>
             <Button.Group widths={2}>
             <Button 

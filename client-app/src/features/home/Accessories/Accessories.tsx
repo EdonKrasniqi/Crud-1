@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { Item, Button, Segment, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
+import { Button, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
 import ProductStore from '../../../app/stores/productStore'
 
  const ProductList: React.FC= () => {
@@ -24,7 +24,7 @@ import ProductStore from '../../../app/stores/productStore'
       <Dropdown.Item>Price:High to Low</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
-    <Card.Group divided>
+    <Card.Group>
         {productsByDate.map(products => (
         <Card className='cardP'  key={products.id} style={{width: 270}}>
           <Card.Content>
