@@ -3,6 +3,7 @@ import { IProduct } from '../models/product';
 import { ILibrary } from '../models/library';
 import { IClothing } from '../models/clothing';
 import { IHealth } from '../models/health';
+import { ISport } from '../models/Sport';
 
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
@@ -86,6 +87,16 @@ const Health = {
     delete: (id: string) => requests.del(`/health/${id}`)
 }
 
+const Sport = {
+
+    list: (): Promise<ISport[]> => requests.get('/sport'),
+    details:(id: string) => requests.get(`/sport/${id}`),
+    create: (Sport: ISport) => requests.post('/sport', Sport),
+    update: (Sport: ISport) => requests.put(`/sport/${Sport.id}`,Sport),
+    delete: (id: string) => requests.del(`/sport/${id}`)
+}
+
+
 
 
 
@@ -97,7 +108,8 @@ const agent ={
     Account,
     Library,
     Clothing,
-    Health
+    Health,
+    Sport
 
 }
 export default agent;
