@@ -3,14 +3,14 @@ import React, { useContext, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { Link} from 'react-router-dom'
 import { Button, Card,  Image } from 'semantic-ui-react'
-import sportstore from '../../../app/stores/sportStore'
+import SportStore from '../../../app/stores/sportStore'
 
  interface DetailParams {
    id: string
  }
 
  const SportDetails: React.FC<RouteComponentProps<DetailParams>> = ({match,history}) => {
-   const sportstore = useContext(sportStore);
+   const sportstore = useContext(SportStore);
    const {Sport,loadSport}= sportstore;
     
    useEffect(() => {

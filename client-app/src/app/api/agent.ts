@@ -89,11 +89,11 @@ const Health = {
 
 const Sport = {
 
-    list: (): Promise<ISport[]> => requests.get('/Sport'),
-    details:(id: string) => requests.get(`/Sport/${id}`),
-    create: (Sport: ISport) => requests.post('/Sport', Sport),
-    update: (Sport: ISport) => requests.put(`/Sport/${Sport.id}`,Sport),
-    delete: (id: string) => requests.del(`/Sport/${id}`)
+    list: (): Promise<ISport[]> => requests.get('/sport'),
+    details:(id: string) => requests.get(`/sport/${id}`),
+    create: (Sport: ISport) => requests.post('/sport', Sport),
+    update: (Sport: ISport) => requests.put(`/sport/${Sport.id}`,Sport),
+    delete: (id: string) => requests.del(`/sport/${id}`)
 }
 
 

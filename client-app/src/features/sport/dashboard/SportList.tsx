@@ -2,12 +2,12 @@ import { observer } from "mobx-react-lite";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Item, Button, Segment, Image, Grid, Card, } from "semantic-ui-react";
-import sportStore from "../../../app/stores/sportStore";
+import SportStore from "../../../app/stores/sportStore";
 
 const SportList: React.FC = (
 
 ) => {
-  const sportStore = useContext(sportStore);
+  const sportStore = useContext(SportStore);
   const {SportsByDate, deleteSport } = sportStore;
   return (
     <Grid centered>
