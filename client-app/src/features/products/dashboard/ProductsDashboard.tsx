@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { Button, Grid } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import ProductList from "./ProductList";
 import { NavLink } from "react-router-dom";
 

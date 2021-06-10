@@ -3,7 +3,7 @@ import { createContext } from "react";
 import agent from "../api/agent";
 import { IProduct } from "../models/product";
 
-configure({ enforceActions: "always" });
+configure({ enforceActions: "never" });
 
  class ProductStore {
   @observable productRegistry = new Map();
@@ -74,7 +74,7 @@ configure({ enforceActions: "always" });
   @action editProduct = async (product: IProduct) => {
     try {
       await agent.Products.update(product);
-      product.date = new Date(product.date!);
+      // product.date = new Date(product.date!);
       this.productRegistry.set(product.id, product);
       this.product = product;
       this.editMode = false;
