@@ -1,21 +1,16 @@
 body {
-  
-  background-color:#E1EBEE !important;
+  background-color:#FAE8E0!important;
 }
+
 .ui.header:first-child {
   margin-left: 10px;
   margin-top: 10px;
-  color: white;
+  color: #EF7C8E;
   margin-right: 100px;
 }
-.ui.inverted.top.fixed.menu {
 
-  background-image: linear-gradient(
-    135deg,
-    rgb(0, 0, 0) 0%,
-    rgb(0, 0, 0) 69%,
-    rgb(0, 0, 0) 89%
-  ) !important;
+.ui.inverted.top.fixed.menu {
+  background-color:#FAE8E0!important;
 } 
 
 .ui.clearing.segment {
@@ -23,7 +18,7 @@ body {
 }
 
 .ui.segment:last-child {
-  background-color: #eeeeee;
+  background-color: #EF7C8E;
   border: 0px;
 }
 .ui.items>.item .content img {
@@ -47,54 +42,157 @@ background: #eeeeee;
   height: auto;
   max-width: 9999px;
 }
+
 .price{
   position: absolute;
-  font-size: 24px;
+  font-size: 20px;
   margin-left: 37%;
   margin-top: 10px;
 }
+
 .cardP{
   background-color: #f0f0f0 !important;
-  height: 400px !important;
+  height: 430px !important;
 }
+
 .cardP:hover{
-  width: 272px !important;
+  width: 271px !important;
   background-color: white !important;
 }
 
-.ProductName:hover{
-  color: black !important;
-  text-decoration: underline !important;
-  
-}
 .ProductName{
-  font-size: medium !important;
+  color: #FAE8E0!important;
+  font-size: 25px !important;
   margin-left: 37% !important;
   margin-top: 5px !important;
 }
 
+.ProductName:hover{
+  color: #EF7C8E !important;
+  font-weight: bold;
+}
 
 .cart{
     position: absolute !important;
     margin-top: 70px !important;
     width: 90% !important;
-    left:10px !important;
+    left: 10px !important;
     height: 40px !important;
+    color: #f77286 !important;
+}
+
+.add.to.cart.icon{
+  width: 100px;
+}
+
+.cart:hover{
+  color: #FAE8E0 !important;
 }
 
 .details{
-  color: #f0f0f0;
+  color: #FAE8E0 !important;
   position: absolute;
   margin-top: 40px;
   margin-left: 26%;
-
 }
+
 .details:hover{
   color: darkgrey;
-
-
-
-
-
-  
 }
+
+.ui.card>.content, .ui.cards>.card>.content {
+  background-color:#f77286 !important;
+  color: white;
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid rgba(34,36,38,.1);
+  background: 0 0;
+  margin: 0;
+  padding: 1em 1em;
+  box-shadow: none;
+  font-size: 1em;
+  border-radius: 0;
+}
+
+.ui.card [class*="right floated"], .ui.cards>.card [class*="right floated"] {
+  background-color:#FAE8E0 !important;
+}
+
+.ui.card [class*="right floated"]:hover, .ui.cards>.card [class*="right floated"]:hover {
+  background-color:#f55e74 !important;
+  border: 1px solid #f55e74 !important
+}
+
+.ui.inverted.pointing.secondary.top.fixed.menu {
+  border-color: #f8d6c7 !important;
+  background-color: #FAE8E0 !important;
+}
+
+.ui.secondary.inverted.pointing.menu .item:hover {
+  font-weight: bold;
+  color:#f77286 !important;
+}
+
+.ui.secondary.inverted.pointing.menu .item {
+  color:#f77286 !important;
+  font-size: 15px !important;
+}
+
+.ui.menu:not(.vertical) .item>.button {
+  border-color: #f77286 !important;
+}
+
+.ui.secondary.inverted.pointing.menu .active.item {
+  border-color: #f77286 !important;
+  color:#f77286 !important;
+}
+
+.ui.labeled.icon.button>.icon, .ui.labeled.icon.buttons>.button>.icon {
+  top: 0;
+  left: 0;
+  color:#FAE8E0 !important;
+}
+
+element.style {
+  margin-left: 1022px;
+  margin-bottom: 10px;
+}
+
+.ui.labeled.icon.button, .ui.labeled.icon.buttons .button {
+  color: #FAE8E0 !important;
+  background-color: #f77286 !important;
+}
+
+.ui.labeled.icon.button:hover, .ui.labeled.icon.buttons.button:hover {
+  color: #FAE8E0 !important;
+  background-color: #f55e74 !important;
+}
+
+.ui.menu:not(.vertical) .item>.button {
+  background-color: #f77286 !important;
+}
+
+.ui.menu:not(.vertical) .item>.button:hover {
+  background-color: #f55e74 !important;
+}
+
+.ui.menu:not(.vertical) .item>.button {
+  color: white;
+}
+
+/* Login Modal */
+
+.ui.positive.button {
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  background-color: #f77286  !important;
+}
+
+h2.ui.positive.button:hover {
+  box-shadow: 0 0 0 0 rgb(34 36 38 / 15%) inset;
+  background-color: #f55e74 !important;
+}
+
+.ui.positive.button.ui.teal.header {
+  color: #f77286 !important;
+}
+
