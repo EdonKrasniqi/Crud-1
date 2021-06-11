@@ -4,7 +4,7 @@ import { ILibrary } from '../models/library';
 import { IClothing } from '../models/clothing';
 import { IHealth } from '../models/health';
 import { ISport } from '../models/Sport';
-
+import { IHousehold } from '../models/household';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -49,21 +49,15 @@ const Account = {
     register:(user: UserFormValues): Promise<User> => requests.post('/account/register', user),
 }
 
-//qitu spo di a duhet edhe qitu te product-> me bo library
-//kur e kom bo library mka dal error
 
-//--- u kry kjo
 
 const Library = {
-
     list: (): Promise<ILibrary[]> => requests.get('/library'),
     details:(id: string) => requests.get(`/library/${id}`),
     create: (library: ILibrary) => requests.post('/library', library),
     update: (library: ILibrary) => requests.put(`/library/${library.id}`,library),
     delete: (id: string) => requests.del(`/library/${id}`)
 }
-
-
 
 //t
 const Clothing = {
@@ -75,8 +69,6 @@ const Clothing = {
     delete: (id: string) => requests.del(`/clothing/${id}`)
 }
 
-
-
 //t
 const Health = {
 
@@ -86,7 +78,6 @@ const Health = {
     update: (health: IHealth) => requests.put(`/health/${health.id}`,health),
     delete: (id: string) => requests.del(`/health/${id}`)
 }
-
 const Sport = {
 
     list: (): Promise<ISport[]> => requests.get('/sport'),
@@ -96,9 +87,15 @@ const Sport = {
     delete: (id: string) => requests.del(`/sport/${id}`)
 }
 
+//t
+const Household = {
 
-
-
+    list: (): Promise<IHousehold[]> => requests.get('/household'),
+    details:(id: string) => requests.get(`/household/${id}`),
+    create: (household: IHousehold) => requests.post('/household', household),
+    update: (household: IHousehold) => requests.put(`/household/${household.id}`,household),
+    delete: (id: string) => requests.del(`/household/${id}`)
+}
 
 
 
@@ -109,7 +106,7 @@ const agent ={
     Library,
     Clothing,
     Health,
-    Sport
-
+    Sport,
+    Household
 }
 export default agent;

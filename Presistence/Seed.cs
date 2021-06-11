@@ -28,13 +28,7 @@ namespace Presistence.Migrations
                 var contacts = new List<Contact>{
                     new Contact 
                     {
-                        Name ="Edon Krasniqi",
-                        Email = "edon@test.com",
-                        Message = "Hi"
-                    },
-                     new Contact 
-                    {
-                        Name ="Florentina Dili",
+                        Name ="Edon Krasniqi2",
                         Email = "edon@test.com",
                         Message = "Hi"
                     }
