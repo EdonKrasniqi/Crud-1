@@ -3,6 +3,8 @@ import { IProduct } from '../models/product';
 import { ILibrary } from '../models/library';
 import { IClothing } from '../models/clothing';
 import { IHealth } from '../models/health';
+import { IHousehold } from '../models/household';
+
 
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
@@ -78,6 +80,17 @@ const Health = {
     delete: (id: string) => requests.del(`/health/${id}`)
 }
 
+//t
+const Household = {
+
+    list: (): Promise<IHousehold[]> => requests.get('/household'),
+    details:(id: string) => requests.get(`/household/${id}`),
+    create: (household: IHousehold) => requests.post('/household', household),
+    update: (household: IHousehold) => requests.put(`/household/${household.id}`,household),
+    delete: (id: string) => requests.del(`/household/${id}`)
+}
+
+
 
 const agent ={
     Products,
@@ -86,6 +99,7 @@ const agent ={
     Library,
     Clothing,
     Health,
+    Household
    
 }
 export default agent;

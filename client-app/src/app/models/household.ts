@@ -1,4 +1,4 @@
-export interface IHouseh {
+export interface IHousehold {
     id: string;
     title:  string;
     description: string;
