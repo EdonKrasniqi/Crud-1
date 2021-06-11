@@ -31,7 +31,7 @@ namespace Application.Contacts
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var contacs = new Contact
+                var contact = new Contact
                 {
                     Id=request.Id,
                     Name=request.Name,
@@ -39,7 +39,7 @@ namespace Application.Contacts
                     Message=request.Message
                 };
 
-                _context.Contacts.Add(contacs);
+                _context.Contacts.Add(contact);
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if(success) return Unit.Value;
