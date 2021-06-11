@@ -48,21 +48,15 @@ const Account = {
     register:(user: UserFormValues): Promise<User> => requests.post('/account/register', user),
 }
 
-//qitu spo di a duhet edhe qitu te product-> me bo library
-//kur e kom bo library mka dal error
 
-//--- u kry kjo
 
 const Library = {
-
     list: (): Promise<ILibrary[]> => requests.get('/library'),
     details:(id: string) => requests.get(`/library/${id}`),
     create: (library: ILibrary) => requests.post('/library', library),
     update: (library: ILibrary) => requests.put(`/library/${library.id}`,library),
     delete: (id: string) => requests.del(`/library/${id}`)
 }
-
-
 
 //t
 const Clothing = {
@@ -73,8 +67,6 @@ const Clothing = {
     update: (clothing: IClothing) => requests.put(`/clothing/${clothing.id}`,clothing),
     delete: (id: string) => requests.del(`/clothing/${id}`)
 }
-
-
 
 //t
 const Health = {
@@ -87,17 +79,13 @@ const Health = {
 }
 
 
-
-
-
-
 const agent ={
     Products,
     Autos,
     Account,
     Library,
     Clothing,
-    Health
-
+    Health,
+   
 }
 export default agent;
