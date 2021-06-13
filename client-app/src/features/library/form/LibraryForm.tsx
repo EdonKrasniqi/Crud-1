@@ -58,9 +58,9 @@ const LibraryForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...library,
         id: uuid(),
       };
-      createLibrary(newLibrary).then(() => history.push(`/admin/manageaccesories/${newLibrary.id}`));
+      createLibrary(newLibrary).then(() => history.push(`/admin/managelibrary/${newLibrary.id}`));
     } else {
-      editLibrary(library).then(() => history.push(`/admin/manageaccesories/${library.id}`));
+      editLibrary(library).then(() => history.push(`/admin/managelibrary/${library.id}`));
     }
   };
 
@@ -93,7 +93,7 @@ const LibraryForm: React.FC<RouteComponentProps<DetailParams>> = ({
               positive type="submit" 
               content="Add" 
             />
-            <Button onClick={() => history.push(`/admin/manageaccesories/${library.id}`)} basic color="grey" content="Back"/>
+            <Button onClick={() => history.push(`/admin/managelibrary/${library.id}`)} basic color="grey" content="Back"/>
             </Button.Group>
         </Form>
         )}

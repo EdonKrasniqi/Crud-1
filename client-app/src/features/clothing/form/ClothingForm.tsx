@@ -58,9 +58,9 @@ const ClothingForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...clothing,
         id: uuid(),
       };
-      createClothing(newClothing).then(() => history.push(`/admin/manageaccesories/${newClothing.id}`));
+      createClothing(newClothing).then(() => history.push(`/admin/manageclothing/${newClothing.id}`));
     } else {
-      editClothing(clothing).then(() => history.push(`/admin/manageaccesories/${clothing.id}`));
+      editClothing(clothing).then(() => history.push(`/admin/manageclothing/${clothing.id}`));
     }
   };
 
@@ -93,7 +93,7 @@ const ClothingForm: React.FC<RouteComponentProps<DetailParams>> = ({
               positive type="submit" 
               content="Add" 
             />
-            <Button onClick={() => history.push(`/admin/manageaccesories/${clothing.id}`)} basic color="grey" content="Back"/>
+            <Button onClick={() => history.push(`/admin/manageclothing/${clothing.id}`)} basic color="grey" content="Back"/>
             </Button.Group>
         </Form>
         )}
