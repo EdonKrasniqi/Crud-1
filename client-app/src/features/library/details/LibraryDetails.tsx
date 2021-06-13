@@ -31,8 +31,8 @@ import Librarytore from '../../../app/stores/libraryStore'
     </Card.Content>
     <Card.Content extra>
       <Button.Group widths={2}>
-          <Button as={Link} to={`/admin/manage/${library.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/managelibrarys')} basic color='grey' content='Back'/>
+          <Button as={Link} to={`/admin/manageLibrary/${library.id}`} basic color='blue' content='Edit'/>
+          <Button onClick={() => history.push('/admin/managelibrary')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

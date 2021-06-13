@@ -28,11 +28,11 @@ import LibraryStore from '../../../app/stores/libraryStore'
         {librarysByDate.map(librarys => (
         <Card className='cardP'  key={librarys.id} style={{width: 270}}>
           <Card.Content>
-          <Image  as={Link} to={`/accesories/${librarys.id}`} src={`/assets/categoryImages/${librarys.category}.jpg`} />
-            <Card.Header className='ProductName' as={Link} to={`/accesories/${librarys.id}`} >{librarys.title}</Card.Header>
+          <Image  as={Link} to={`/library/${librarys.id}`} src={`/assets/categoryImages/${librarys.category}.jpg`} />
+            <Card.Header className='ProductName' as={Link} to={`/library/${librarys.id}`} >{librarys.title}</Card.Header>
             <Card.Content extra>
             <div className='price'>{librarys.price} €</div>
-            <Card.Description  as={Link} to={`/accesories/${librarys.id}`}  className='details'>Look the details</Card.Description>
+            <Card.Description  as={Link} to={`/library/${librarys.id}`}  className='details'>Look the details</Card.Description>
                 <Button className='cart' as={Link} to={`/orderForm`}
                    floated='right' icon='add to cart' color='orange'/>
             </Card.Content>

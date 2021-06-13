@@ -28,11 +28,11 @@ import ClothingStore from '../../../app/stores/clothingStore'
         {clothingsByDate.map(clothings => (
         <Card className='cardP'  key={clothings.id} style={{width: 270}}>
           <Card.Content>
-          <Image  as={Link} to={`/accesories/${clothings.id}`} src={`/assets/categoryImages/${clothings.category}.jpg`} />
+          <Image  as={Link} to={`/clothing/${clothings.id}`} src={`/assets/categoryImages/${clothings.category}.jpg`} />
             <Card.Header className='ProductName' as={Link} to={`/accesories/${clothings.id}`} >{clothings.title}</Card.Header>
             <Card.Content extra>
             <div className='price'>{clothings.price} €</div>
-            <Card.Description  as={Link} to={`/accesories/${clothings.id}`}  className='details'>Look the details</Card.Description>
+            <Card.Description  as={Link} to={`/clothing/${clothings.id}`}  className='details'>Look the details</Card.Description>
                 <Button className='cart' as={Link} to={`/orderForm`}
                    floated='right' icon='add to cart' color='orange'/>
             </Card.Content>

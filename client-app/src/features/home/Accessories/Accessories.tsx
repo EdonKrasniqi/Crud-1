@@ -32,7 +32,7 @@ import ProductStore from '../../../app/stores/productStore'
             <Card.Header className='ProductName' as={Link} to={`/accesories/${products.id}`} >{products.title}</Card.Header>
             <Card.Content extra>
             <div className='price'>{products.price} €</div>
-            <Card.Description  as={Link} to={`/accesories/${products.id}`}  className='details'>Look the details</Card.Description>
+            <Button as={Link} to={`/accesories/${products.id}`}   className='details' content=' Look the details'/>
                 <Button className='cart' as={Link} to={`/orderForm`}
                    floated='right' icon='add to cart' color='orange'/>
             </Card.Content>

@@ -31,7 +31,7 @@ import Healthtore from '../../../app/stores/healthStore'
     </Card.Content>
     <Card.Content extra>
       <Button.Group widths={2}>
-          <Button as={Link} to={`/admin/manage/${health.id}`} basic color='blue' content='Edit'/>
+          <Button as={Link} to={`/admin/manageHelath/${health.id}`} basic color='blue' content='Edit'/>
           <Button onClick={() => history.push('/admin/managehealths')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>

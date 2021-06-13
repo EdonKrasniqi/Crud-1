@@ -24,18 +24,23 @@ import LibraryDetails from "../../features/library/details/LibraryDetails";
 import LibraryForm from "../../features/library/form/LibraryForm";
 import LibraryDashboard from "../../features/library/dashboard/LibraryDashboard";
 import Clothing from "../../features/home/Clothing/Clothing";
+import LibraryDetail from "../../features/home/Library/LibraryDetail";
+import ClothingDetail from "../../features/home/Clothing/ClothingDetail";
+import ClothingStore from "../stores/clothingStore";
 const App = () => {
   const productStore = useContext(ProductStore);
+  const clothingStore = useContext(ClothingStore);
   const {commonStore,userStore} = useStore();
 
   useEffect(() => {
     productStore.loadProducts();
+    clothingStore.loadClothings();
     if(commonStore.token){
       userStore.getUser().finally(() => commonStore.setAppLoaded());
     }else{
       commonStore.setAppLoaded();
     }
-  }, [productStore,commonStore,userStore]);
+  }, [productStore,commonStore,userStore,clothingStore]);
 
   if(!commonStore.appLoaded) return <LoadingComponent content='Loading...'/>
 
@@ -51,21 +56,20 @@ const App = () => {
         <Route path="/accesories/:id" component={AccessoriesDetail} />
         <Route path={["/admin/createProducts", '/admin/manage/:id']} component={ProductForm} />
         <Route path="/admin" component={NavBarAdmin} />
-        <Route exact path="/admin" component={AdminDashboard} />
         <Route exact path="/admin/manageaccesories" component={ProductsDashboard} />
         <Route path="/admin/manageaccesories/:id" component={ProductDetails} />
         <Route path="/login" component={LoginForm} />
 
         {/* Clothing's Routing */}
         <Route exact path="/clothing" component={Clothing} />
-        <Route path="/clothings/:id" component={ClothingDetails} />
+        <Route path="/clothings/:id" component={ClothingDetail} />
         <Route path={["/admin/createClothing", '/admin/manageClothing/:id']} component={ClothingForm} />
         <Route exact path="/admin/manageclothing" component={ClothingDashboard} />
         <Route path="/admin/manageclothing/:id" component={ClothingDetails} />
 
         {/* Library's Routing */}
         <Route exact path="/library" component={Library} />
-        <Route path="/library/:id" component={LibraryDetails} />
+        <Route path="/library/:id" component={LibraryDetail} />
         <Route path={["/admin/createLibrary", '/admin/manageLibrary/:id']} component={LibraryForm} />
         <Route path="/admin" component={NavBarAdmin} />
         <Route exact path="/admin/managelibrary" component={LibraryDashboard} />

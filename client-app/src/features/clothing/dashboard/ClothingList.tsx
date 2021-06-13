@@ -25,7 +25,7 @@ const ClothingList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/manageclothings/${clothings.id}`}
+                  to={`/admin/manageclothing/${clothings.id}`}
                   floated="right"
                   content="View"
                   color="blue"
