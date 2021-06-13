@@ -62,11 +62,11 @@ const Library = {
 //t
 const Clothing = {
 
-    list: (): Promise<IClothing[]> => requests.get('/clothing'),
-    details:(id: string) => requests.get(`/clothing/${id}`),
-    create: (clothing: IClothing) => requests.post('/clothing', clothing),
-    update: (clothing: IClothing) => requests.put(`/clothing/${clothing.id}`,clothing),
-    delete: (id: string) => requests.del(`/clothing/${id}`)
+    list: (): Promise<IClothing[]> => requests.get('/clothings'),
+    details:(id: string) => requests.get(`/clothings/${id}`),
+    create: (clothing: IClothing) => requests.post('/clothings', clothing),
+    update: (clothing: IClothing) => requests.put(`/clothings/${clothing.id}`,clothing),
+    delete: (id: string) => requests.del(`/clothings/${id}`)
 }
 
 //t
