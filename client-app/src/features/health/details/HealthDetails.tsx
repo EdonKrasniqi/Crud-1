@@ -3,14 +3,14 @@ import React, { useContext, useEffect } from 'react'
 import { RouteComponentProps } from 'react-router'
 import { Link} from 'react-router-dom'
 import { Button, Card,  Image } from 'semantic-ui-react'
-import Healthtore from '../../../app/stores/healthStore'
+import HealthStore from '../../../app/stores/healthStore'
 
  interface DetailParams {
    id: string
  }
 
  const HealthDetails: React.FC<RouteComponentProps<DetailParams>> = ({match,history}) => {
-   const healthtore = useContext(Healthtore);
+   const healthtore = useContext(HealthStore);
    const {health,loadHealth}= healthtore;
     
    useEffect(() => {
