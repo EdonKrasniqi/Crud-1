@@ -58,9 +58,9 @@ const HealthForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...health,
         id: uuid(),
       };
-      createHealth(newHealth).then(() => history.push(`/admin/manageaccesories/${newHealth.id}`));
+      createHealth(newHealth).then(() => history.push(`/admin/managehealth/${newHealth.id}`));
     } else {
-      editHealth(health).then(() => history.push(`/admin/manageaccesories/${health.id}`));
+      editHealth(health).then(() => history.push(`/admin/managehealth/${health.id}`));
     }
   };
 
@@ -93,7 +93,7 @@ const HealthForm: React.FC<RouteComponentProps<DetailParams>> = ({
               positive type="submit" 
               content="Add" 
             />
-            <Button onClick={() => history.push(`/admin/manageaccesories/${health.id}`)} basic color="grey" content="Back"/>
+            <Button onClick={() => history.push(`/admin/managehealth/${health.id}`)} basic color="grey" content="Back"/>
             </Button.Group>
         </Form>
         )}
