@@ -6,14 +6,13 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Presistence;
 
-namespace Application.Products
+namespace Application.Sports
 {
-    public class List
+    public class SportsList
     {
-        public class Query : IRequest<List<Product>> { }
+        public class Query : IRequest<List<Sport>> { }
 
-
-        public class Handler : IRequestHandler<Query, List<Product>>
+        public class Handler : IRequestHandler<Query, List<Sport>>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
@@ -21,12 +20,12 @@ namespace Application.Products
                 _context = context;
             }
 
-            public async Task<List<Product>> Handle(Query request,
+            public async Task<List<Sport>> Handle(Query request,
             CancellationToken cancellationToken)
             {
-                var products = await _context.Products.ToListAsync();
+                var sports = await _context.Sports.ToListAsync();
 
-                return products;
+                return sports;
             }
         }
     }

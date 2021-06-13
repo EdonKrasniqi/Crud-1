@@ -11,8 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Presistence;
+using Application.Clothings;
+using Application.Healths;
+using Application.Households;
+using Application.Sports;
 
 namespace API
 {
@@ -43,8 +46,16 @@ namespace API
             });
             
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddMediatR(typeof(ClothingsList.Handler).Assembly);
+            services.AddMediatR(typeof(HealthsList.Handler).Assembly);
+            services.AddMediatR(typeof(HouseholdsList.Handler).Assembly);
+            services.AddMediatR(typeof(SportsList.Handler).Assembly);
             services.AddMediatR(typeof(CList.Handler).Assembly);
             services.AddControllers();
+            
+            
+            // error ka qitu spo muj me i ra nfije, qe munesh me ndreq qit error e vazhdoj, dikun te min 7:30 e videos jom met
+            // services.AddRoles<IdentityRole>();
             services.AddControllers(opt =>
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -52,6 +63,10 @@ namespace API
             }).AddFluentValidation(config =>{
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
                 config.RegisterValidatorsFromAssemblyContaining<CCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<ClothingCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<HealthCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<HoudeholdsCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<SportsCreate>();
             });
             services.AddIdentityServices(_config);
         }
