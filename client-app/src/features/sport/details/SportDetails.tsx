@@ -23,15 +23,14 @@ import SportStore from '../../../app/stores/sportStore'
   <Card fluid>
     <Image src={`/assets/categoryImages/${Sport!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{Sport!.title}</Card.Header>   
-      <Card.Meta><span>{Sport!.date}</span></Card.Meta>
+      <Card.Header>{Sport!.title}</Card.Header>  
       <Card.Description>
       {Sport!.description}</Card.Description>
       <Card.Description>{Sport!.price}$</Card.Description>
     </Card.Content>
     <Card.Content extra>
       <Button.Group widths={2}>
-          <Button as={Link} to={`/admin/manage/${Sport.id}`} basic color='blue' content='Edit'/>
+          <Button as={Link} to={`/admin/manageSportForm/${Sport.id}`} basic color='blue' content='Edit'/>
           <Button onClick={() => history.push('/admin/manageSports')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>

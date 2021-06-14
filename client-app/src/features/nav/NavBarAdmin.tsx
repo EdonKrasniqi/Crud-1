@@ -12,10 +12,11 @@ const NavBarAdmin: React.FC = () => {
           AdminDashboard
         </Menu.Item>
         <Menu.Item name="Manage Accessories" as={NavLink} exact to="/admin/manageaccesories"></Menu.Item>
-        <Menu.Item name="Manage Auto" as={NavLink} exact to="/admin/manageauto"></Menu.Item>
+        <Menu.Item name="Manage Sport" as={NavLink} exact to="/admin/managesport"></Menu.Item>
         <Menu.Item name="Manage Library" as={NavLink} exact to="/admin/managelibrary"></Menu.Item>
         <Menu.Item name="Manage Clothing" as={NavLink} exact to="/admin/manageclothing"></Menu.Item>
         <Menu.Item name="Manage Health" as={NavLink} exact to="/admin/managehealth"></Menu.Item>
+        <Menu.Item name="Manage Household" as={NavLink} exact to="/admin/managehousehold"></Menu.Item>
       </Container>
       <Menu.Item>
       </Menu.Item>

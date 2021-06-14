@@ -58,9 +58,9 @@ const HouseholdForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...household,
         id: uuid(),
       };
-      createHousehold(newHousehold).then(() => history.push(`/admin/manageaccesories/${newHousehold.id}`));
+      createHousehold(newHousehold).then(() => history.push(`/admin/managehousehold/${newHousehold.id}`));
     } else {
-      editHousehold(household).then(() => history.push(`/admin/manageaccesories/${household.id}`));
+      editHousehold(household).then(() => history.push(`/admin/managehousehold/${household.id}`));
     }
   };
 
@@ -93,7 +93,7 @@ const HouseholdForm: React.FC<RouteComponentProps<DetailParams>> = ({
               positive type="submit" 
               content="Add" 
             />
-            <Button onClick={() => history.push(`/admin/manageaccesories/${household.id}`)} basic color="grey" content="Back"/>
+            <Button onClick={() => history.push(`/admin/managehousehold/${household.id}`)} basic color="grey" content="Back"/>
             </Button.Group>
         </Form>
         )}

@@ -23,16 +23,15 @@ import Librarytore from '../../../app/stores/libraryStore'
   <Card fluid>
     <Image src={`/assets/categoryImages/${library!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{library!.title}</Card.Header>   
-      <Card.Meta><span>{library!.date}</span></Card.Meta>
+      <Card.Header>{library!.title}</Card.Header>
       <Card.Description>
       {library!.description}</Card.Description>
       <Card.Description>{library!.price}$</Card.Description>
     </Card.Content>
     <Card.Content extra>
       <Button.Group widths={2}>
-          <Button as={Link} to={`/admin/manageLibrary/${library.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/managelibrary')} basic color='grey' content='Back'/>
+          <Button as={Link} to={`/admin/manageLibraryForm/${library.id}`} basic color='blue' content='Edit'/>
+          <Button onClick={() => history.push('/admin/managelibraries')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

@@ -24,7 +24,6 @@ import Clothingtore from '../../../app/stores/clothingStore'
     <Image src={`/assets/categoryImages/${clothing!.category}.jpg`} wrapped ui={false} />
     <Card.Content>
       <Card.Header>{clothing!.title}</Card.Header>   
-      <Card.Meta><span>{clothing!.date}</span></Card.Meta>
       <Card.Description>
       {clothing!.description}</Card.Description>
       <Card.Description>{clothing!.price}$</Card.Description>
