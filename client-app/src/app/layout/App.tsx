@@ -27,20 +27,47 @@ import Clothing from "../../features/home/Clothing/Clothing";
 import LibraryDetail from "../../features/home/Library/LibraryDetail";
 import ClothingDetail from "../../features/home/Clothing/ClothingDetail";
 import ClothingStore from "../stores/clothingStore";
+import LibraryStore from "../stores/libraryStore";
+import Sport from "../../features/home/Sport/Sport";
+import SportDetail from "../../features/home/Sport/SportDetail";
+import SportForm from "../../features/sport/form/SportForm";
+import SportDashboard from "../../features/sport/dashboard/SportDashboard";
+import SportDetails from "../../features/sport/details/SportDetails";
+import SportStore from "../stores/sportStore";
+import Health from "../../features/home/Health/Health";
+import HealthDetail from "../../features/home/Health/HealthDetail";
+import HealthForm from "../../features/health/form/HealthForm";
+import HealthDashboard from "../../features/health/dashboard/HealthDashboard";
+import HealthDetails from "../../features/health/details/HealthDetails";
+import HealthStore from "../stores/healthStore";
+import Household from "../../features/home/Household/Household";
+import HouseholdDetail from "../../features/home/Household/HouseholdDetail";
+import HouseholdForm from "../../features/household/form/HouseholdForm";
+import HouseholdDashboard from "../../features/household/dashboard/HouseholdDashboard";
+import HouseholdDetails from "../../features/household/details/HouseholdDetails";
+import HouseholdStore from "../stores/householdStore";
 const App = () => {
   const productStore = useContext(ProductStore);
   const clothingStore = useContext(ClothingStore);
+  const libraryStore = useContext(LibraryStore);
+  const sportStore = useContext(SportStore);
+  const healthStore = useContext(HealthStore);
+  const householdStore = useContext(HouseholdStore);
   const {commonStore,userStore} = useStore();
 
   useEffect(() => {
     productStore.loadProducts();
     clothingStore.loadClothings();
+    libraryStore.loadLibrarys();
+    sportStore.loadSports();
+    healthStore.loadHealths();
+    householdStore.loadHouseholds();
     if(commonStore.token){
       userStore.getUser().finally(() => commonStore.setAppLoaded());
     }else{
       commonStore.setAppLoaded();
     }
-  }, [productStore,commonStore,userStore,clothingStore]);
+  }, [productStore,commonStore,userStore,clothingStore,libraryStore,sportStore]);
 
   if(!commonStore.appLoaded) return <LoadingComponent content='Loading...'/>
 
@@ -62,18 +89,38 @@ const App = () => {
 
         {/* Clothing's Routing */}
         <Route exact path="/clothing" component={Clothing} />
-        <Route  exact path="/clothings/:id" component={ClothingDetail} />
+        <Route exact path="/clothings/:id" component={ClothingDetail} />
         <Route exact path={["/admin/createClothing", '/admin/manageClothinForm/:id']} component={ClothingForm} />
         <Route exact path="/admin/manageclothing" component={ClothingDashboard} />
-        <Route  exact path="/admin/manageclothing/:id" component={ClothingDetails} />
+        <Route exact path="/admin/manageclothing/:id" component={ClothingDetails} />
 
         {/* Library's Routing */}
         <Route exact path="/library" component={Library} />
-        <Route path="/library/:id" component={LibraryDetail} />
-        <Route path={["/admin/createLibrary", '/admin/manageLibrary/:id']} component={LibraryForm} />
-        <Route path="/admin" component={NavBarAdmin} />
+        <Route exact path="/librarys/:id" component={LibraryDetail} />
+        <Route exact path={["/admin/createLibrary", '/admin/manageLibraryForm/:id']} component={LibraryForm} />
         <Route exact path="/admin/managelibrary" component={LibraryDashboard} />
-        <Route path="/admin/managelibrary/:id" component={LibraryDetails} />
+        <Route exact path="/admin/managelibrary/:id" component={LibraryDetails} />
+
+        {/* Sport's Routing */}
+        <Route exact path="/sport" component={Sport} />
+        <Route exact path="/sports/:id" component={SportDetail} />
+        <Route exact path={["/admin/createSports", '/admin/manageSportsForm/:id']} component={SportForm} />
+        <Route exact path="/admin/managesport" component={SportDashboard} />
+        <Route exact path="/admin/managesport/:id" component={SportDetails} />
+
+        {/* Health's Routing */}
+        <Route exact path="/health" component={Health} />
+        <Route exact path="/healths/:id" component={HealthDetail} />
+        <Route exact path={["/admin/createHealth", '/admin/manageHealthForm/:id']} component={HealthForm} />
+        <Route exact path="/admin/managehealth" component={HealthDashboard} />
+        <Route exact path="/admin/managehealth/:id" component={HealthDetails} />
+
+        {/* Household's Routing */}
+        <Route exact path="/household" component={Household} />
+        <Route exact path="/households/:id" component={HouseholdDetail} />
+        <Route exact path={["/admin/createHousehold", '/admin/manageHouseholdForm/:id']} component={HouseholdForm} />
+        <Route exact path="/admin/managehousehold" component={HouseholdDashboard} />
+        <Route exact path="/admin/managehousehold/:id" component={HouseholdDetails} />
       </Container>
     </Fragment>
     </>

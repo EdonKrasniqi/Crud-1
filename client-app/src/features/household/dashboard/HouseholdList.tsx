@@ -17,7 +17,6 @@ const HouseholdList: React.FC = (
             <Card.Content>
               <Image src={`/assets/categoryImages/${households.category}.jpg`} />
               <Card.Header>{households.title}</Card.Header>
-              <Card.Meta>{households.date}</Card.Meta>
               <Card.Description>
                 <div>{households.description}</div>
                 <div>{households.price}$</div>

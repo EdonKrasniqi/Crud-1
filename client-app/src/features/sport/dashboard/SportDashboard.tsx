@@ -8,7 +8,7 @@ const SportDashboard: React.FC = () => {
     <div>
   <Button  style={{marginLeft:1200}} 
     as={NavLink}
-    to="/admin/createSport"
+    to="/admin/createSports"
     positive
     content="Add Sport"
   />

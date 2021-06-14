@@ -2,11 +2,11 @@ import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { Item, Button, Segment, Image, Grid, Card, Dropdown,} from 'semantic-ui-react'
-import SportsStore from '../../../app/stores/sportStore'
+import HealthStore from '../../../app/stores/healthStore'
 
- const SportList: React.FC= () => {
-    const sportStore = useContext(SportsStore);
-    const {SportsByDate} = sportStore;
+ const HealthList: React.FC= () => {
+    const healthStore = useContext(HealthStore);
+    const {healthsByDate} = healthStore;
     return (
       <Grid>
       <Dropdown style={{marginLeft:1022,marginBottom:10}}
@@ -25,14 +25,14 @@ import SportsStore from '../../../app/stores/sportStore'
     </Dropdown.Menu>
   </Dropdown>
     <Card.Group divided>
-        {SportsByDate.map(sports => (
-        <Card className='cardP'  key={sports.id} style={{width: 270}}>
+        {healthsByDate.map(health => (
+        <Card className='cardP'  key={health.id} style={{width: 270}}>
           <Card.Content>
-          <Image  as={Link} to={`/sports/${sports.id}`} src={`/assets/categoryImages/${sports.category}.jpg`} />
-            <Card.Header className='ProductName' as={Link} to={`/sports/${sports.id}`} >{sports.title}</Card.Header>
+          <Image  as={Link} to={`/health/${health.id}`} src={`/assets/categoryImages/${health.category}.jpg`} />
+            <Card.Header className='ProductName' as={Link} to={`/health/${health.id}`} >{health.title}</Card.Header>
             <Card.Content extra>
-            <div className='price'>{sports.price} €</div>
-            <Card.Description  as={Link} to={`/sports/${sports.id}`}  className='details'>Look the details</Card.Description>
+            <div className='price'>{health.price} €</div>
+            <Card.Description  as={Link} to={`/health/${health.id}`}  className='details'>Look the details</Card.Description>
                 <Button className='cart' as={Link} to={`/orderForm`}
                    floated='right' icon='add to cart' color='orange'/>
             </Card.Content>
@@ -44,5 +44,5 @@ import SportsStore from '../../../app/stores/sportStore'
     )
 }
 
-export default observer (SportList);
+export default observer (HealthList);
 

@@ -15,10 +15,11 @@ const NavBar: React.FC = () => {
         <Menu.Item name='Home'  as={NavLink} exact to="/">
         </Menu.Item>
         <Menu.Item name="Accessories" as={NavLink} exact to="/accesories"></Menu.Item>
-        <Menu.Item name="Auto" as={NavLink} exact to="/auto"></Menu.Item>
+        <Menu.Item name="Sport" as={NavLink} exact to="/sport"></Menu.Item>
         <Menu.Item name="Library" as={NavLink} exact to="/library"></Menu.Item>
         <Menu.Item name="Clothing" as={NavLink} exact to="/clothing"></Menu.Item>
         <Menu.Item name="Health" as={NavLink} exact to="/health"></Menu.Item>
+        <Menu.Item name="Household" as={NavLink} exact to="/household"></Menu.Item>
       </Container>
       {isLoggedIn ?(
         <>

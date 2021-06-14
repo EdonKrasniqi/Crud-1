@@ -17,7 +17,6 @@ const SportList: React.FC = (
             <Card.Content>
               <Image src={`/assets/categoryImages/${Sports.category}.jpg`} />
               <Card.Header>{Sports.title}</Card.Header>
-              <Card.Meta>{Sports.date}</Card.Meta>
               <Card.Description>
                 <div>{Sports.description}</div>
                 <div>{Sports.price}$</div>
@@ -25,7 +24,7 @@ const SportList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/manageSports/${Sports.id}`}
+                  to={`/admin/manageSport/${Sports.id}`}
                   floated="right"
                   content="View"
                   color="blue"

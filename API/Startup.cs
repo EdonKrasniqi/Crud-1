@@ -16,6 +16,7 @@ using Application.Clothings;
 using Application.Healths;
 using Application.Households;
 using Application.Sports;
+using Application.Libraries;
 
 namespace API
 {
@@ -51,6 +52,7 @@ namespace API
             services.AddMediatR(typeof(HouseholdsList.Handler).Assembly);
             services.AddMediatR(typeof(SportsList.Handler).Assembly);
             services.AddMediatR(typeof(CList.Handler).Assembly);
+            services.AddMediatR(typeof(LibrariesList).Assembly);
             services.AddControllers();
             
             
@@ -65,8 +67,9 @@ namespace API
                 config.RegisterValidatorsFromAssemblyContaining<CCreate>();
                 config.RegisterValidatorsFromAssemblyContaining<ClothingCreate>();
                 config.RegisterValidatorsFromAssemblyContaining<HealthCreate>();
-                config.RegisterValidatorsFromAssemblyContaining<HoudeholdsCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<HouseholdsCreate>();
                 config.RegisterValidatorsFromAssemblyContaining<SportsCreate>();
+                config.RegisterValidatorsFromAssemblyContaining<LibraryCreate>();
             });
             services.AddIdentityServices(_config);
         }

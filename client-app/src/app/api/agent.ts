@@ -34,14 +34,6 @@ const Products = {
     update: (product: IProduct) => requests.put(`/products/${product.id}`,product),
     delete: (id: string) => requests.del(`/products/${id}`)
 }
-const Autos = {
-
-    list: (): Promise<IProduct[]> => requests.get('/auto'),
-    details:(id: string) => requests.get(`/auto/${id}`),
-    create: (product: IProduct) => requests.post('/auto', product),
-    update: (product: IProduct) => requests.put(`/auto/${product.id}`,product),
-    delete: (id: string) => requests.del(`/auto/${id}`)
-}
 
 const Account = {
     current: (): Promise<User> => requests.get('/account'), 
@@ -72,19 +64,19 @@ const Clothing = {
 //t
 const Health = {
 
-    list: (): Promise<IHealth[]> => requests.get('/health'),
-    details:(id: string) => requests.get(`/health/${id}`),
-    create: (health: IHealth) => requests.post('/health', health),
-    update: (health: IHealth) => requests.put(`/health/${health.id}`,health),
-    delete: (id: string) => requests.del(`/health/${id}`)
+    list: (): Promise<IHealth[]> => requests.get('/healths'),
+    details:(id: string) => requests.get(`/healths/${id}`),
+    create: (health: IHealth) => requests.post('/healths', health),
+    update: (health: IHealth) => requests.put(`/healths/${health.id}`,health),
+    delete: (id: string) => requests.del(`/healths/${id}`)
 }
 const Sport = {
 
-    list: (): Promise<ISport[]> => requests.get('/sport'),
-    details:(id: string) => requests.get(`/sport/${id}`),
-    create: (Sport: ISport) => requests.post('/sport', Sport),
-    update: (Sport: ISport) => requests.put(`/sport/${Sport.id}`,Sport),
-    delete: (id: string) => requests.del(`/sport/${id}`)
+    list: (): Promise<ISport[]> => requests.get('/sports'),
+    details:(id: string) => requests.get(`/sports/${id}`),
+    create: (Sport: ISport) => requests.post('/sports', Sport),
+    update: (Sport: ISport) => requests.put(`/sports/${Sport.id}`,Sport),
+    delete: (id: string) => requests.del(`/sports/${id}`)
 }
 
 //t
@@ -101,7 +93,6 @@ const Household = {
 
 const agent ={
     Products,
-    Autos,
     Account,
     Library,
     Clothing,

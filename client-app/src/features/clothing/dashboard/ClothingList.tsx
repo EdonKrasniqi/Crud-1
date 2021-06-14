@@ -17,7 +17,6 @@ const ClothingList: React.FC = (
             <Card.Content>
               <Image src={`/assets/categoryImages/${clothings.category}.jpg`} />
               <Card.Header>{clothings.title}</Card.Header>
-              <Card.Meta>{clothings.date}</Card.Meta>
               <Card.Description>
                 <div>{clothings.description}</div>
                 <div>{clothings.price}$</div>

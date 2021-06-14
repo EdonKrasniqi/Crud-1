@@ -28,7 +28,7 @@ import SportStore from '../../../app/stores/sportStore'
     <Card.Content extra>
       <Button.Group widths={2}>
           <Button onClick={() => history.push('/orderform')} basic color='green' content='Buy Now'/>
-          <Button onClick={() => history.push('/accesories')} basic color='red' content='Back'/>
+          <Button onClick={() => history.push('/sports')} basic color='red' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

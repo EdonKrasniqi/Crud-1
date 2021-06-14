@@ -5,9 +5,9 @@ using Domain;
 using MediatR;
 using Presistence;
 
-namespace Application.Households
+namespace Application.Libraries
 {
-    public class HouseholdsCreate
+    public class LibraryCreate
     {
         public class Command : IRequest
         {
@@ -35,7 +35,7 @@ namespace Application.Households
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var household = new Household
+                var library = new Library
                 {
                     Id=request.Id,
                     Title=request.Title,
@@ -45,7 +45,7 @@ namespace Application.Households
                     Price=request.Price
                 };
 
-                _context.Households.Add(household);
+                _context.Library.Add(library);
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if(success) return Unit.Value;

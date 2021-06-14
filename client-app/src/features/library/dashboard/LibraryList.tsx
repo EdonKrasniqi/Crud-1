@@ -17,7 +17,6 @@ const LibraryList: React.FC = (
             <Card.Content>
               <Image src={`/assets/categoryImages/${librarys.category}.jpg`} />
               <Card.Header>{librarys.title}</Card.Header>
-              <Card.Meta>{librarys.date}</Card.Meta>
               <Card.Description>
                 <div>{librarys.description}</div>
                 <div>{librarys.price}$</div>
@@ -25,7 +24,7 @@ const LibraryList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/managelibrarys/${librarys.id}`}
+                  to={`/admin/managelibrary/${librarys.id}`}
                   floated="right"
                   content="View"
                   color="blue"
