@@ -7,6 +7,7 @@ import { ISport } from '../models/Sport';
 import { IHousehold } from '../models/household';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
+import { ITools } from '../models/tools';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -88,6 +89,16 @@ const Household = {
     update: (household: IHousehold) => requests.put(`/household/${household.id}`,household),
     delete: (id: string) => requests.del(`/household/${id}`)
 }
+const Tools = {
+
+    list: (): Promise<ITools[]> => requests.get('/Tools'),
+    details:(id: string) => requests.get(`/Tools/${id}`),
+    create: (tools: ITools) => requests.post('/Tools', tools),
+    update: (tools: ITools) => requests.put(`/Tools/${tools.id}`,tools),
+    delete: (id: string) => requests.del(`/Tools/${id}`)
+}
+
+
 
 
 
@@ -98,6 +109,7 @@ const agent ={
     Clothing,
     Health,
     Sport,
-    Household
+    Household,
+    Tools
 }
 export default agent;
