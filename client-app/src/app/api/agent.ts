@@ -9,6 +9,7 @@ import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 import { ITools } from '../models/tools';
 import { ICosmetics } from '../models/cosmetics';
+import { IFoodAndDrinks } from '../models/foodandDrinks';
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -108,6 +109,18 @@ const Cosmetics = {
     delete: (id: string) => requests.del(`/Cosmetics/${id}`)
 }
 
+const FoodAndDrinks = {
+
+    list: (): Promise<IFoodAndDrinks[]> => requests.get('/FoodAndDrinks'),
+    details:(id: string) => requests.get(`/FoodAndDrinks/${id}`),
+    create: (FoodAndDrinks: IFoodAndDrinks) => requests.post('/FoodAndDrinkss', FoodAndDrinks),
+    update: (FoodAndDrinks: IFoodAndDrinks) => requests.put(`/FoodAndDrinks/${FoodAndDrinks.id}`,FoodAndDrinks),
+    delete: (id: string) => requests.del(`/FoodAndDrinks/${id}`)
+}
+
+
+
+
 
 
 
@@ -121,6 +134,7 @@ const agent ={
     Sport,
     Household,
     Tools,
-    Cosmetics
+    Cosmetics,
+    FoodAndDrinks
 }
 export default agent;
