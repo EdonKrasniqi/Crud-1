@@ -47,7 +47,7 @@ const CosmeticForm: React.FC<RouteComponentProps<DetailParams>> = ({
   const validationSchema = Yup.object({
     title: Yup.string().required('The Cosmetics title is required'),
     description: Yup.string().required('The Cosmetics description is required'),
-    category: Yup.string().required('Image name is required'),
+    category: Yup.string().required('Category is required'),
     date: Yup.string().required(),
     price: Yup.string().required()
   })
@@ -78,7 +78,7 @@ const CosmeticForm: React.FC<RouteComponentProps<DetailParams>> = ({
             <MyTextInput name='title' placeholder='Title' />
 
             <MyTextArea rows={3} name="description" placeholder="Description"/>
-            <MySelectInput options={categoryOptions} name="category" placeholder="Image Name"/>
+            <MySelectInput options={categoryOptions} name="category" placeholder="Category"/>
             <MyDateInput 
               name="date" 
               placeholderText="Date"
