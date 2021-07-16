@@ -37,6 +37,7 @@ const NavBar: React.FC = () => {
         </>
       ): (
         <>
+         <Menu.Item name="Contact" as={NavLink} exact to="/contact"></Menu.Item>
         <Menu.Item>
         <Button
            positive

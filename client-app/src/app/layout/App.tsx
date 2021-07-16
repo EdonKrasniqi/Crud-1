@@ -46,6 +46,7 @@ import HouseholdForm from "../../features/household/form/HouseholdForm";
 import HouseholdDashboard from "../../features/household/dashboard/HouseholdDashboard";
 import HouseholdDetails from "../../features/household/details/HouseholdDetails";
 import HouseholdStore from "../stores/householdStore";
+import { Contacts } from "../../features/Contact/Contacts"
 const App = () => {
   const productStore = useContext(ProductStore);
   const clothingStore = useContext(ClothingStore);
@@ -77,6 +78,7 @@ const App = () => {
     <Fragment>
     <Route exact path="/" component={HomePage} />
     <Route exact path ="/admin" component={AdminDashboard}/>
+    <Route exact path ="/contact" component={Contacts}/>
       <Container style={{ marginTop: "5em" }}>
         {/* Accessories Routing */}
         
