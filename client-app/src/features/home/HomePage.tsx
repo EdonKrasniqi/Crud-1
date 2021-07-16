@@ -1,9 +1,8 @@
-import { Container } from "semantic-ui-react";
-
+import Slider from "../Components/Slider/Slider"
 export const HomePage = () => {
   return (
-    <Container style={{ marginTop: "7em" }}>
-      <h1>Home Page1</h1>
-    </Container>
+  <>
+    <Slider />
+  </>
   );
 };
