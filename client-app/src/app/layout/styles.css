@@ -147,6 +147,9 @@ background: #eeeeee;
   border-color: #f77286 !important;
   color:#f77286 !important;
 }
+.adminnav{
+  color: #EF7C8E !important;
+}
 
 .ui.labeled.icon.button>.icon, .ui.labeled.icon.buttons>.button>.icon {
   top: 0;
@@ -199,5 +202,9 @@ h2.ui.positive.button:hover {
 
 .ui.teal.header {
   color:  #f77286 !important;
+}
+.admindashboard{
+  text-align: center;
+  font-size: large;
 }
 

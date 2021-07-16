@@ -75,9 +75,11 @@ const App = () => {
     <>
     <ModalContainer/>
     <Fragment>
+    <Route exact path="/" component={HomePage} />
+    <Route exact path ="/admin" component={AdminDashboard}/>
       <Container style={{ marginTop: "5em" }}>
         {/* Accessories Routing */}
-        <Route exact path="/" component={HomePage} />
+        
         <Route path="/" component={NavBar} />
         <Route exact path="/accesories" component={Accessories} />
         <Route exact path="/accesories/:id" component={AccessoriesDetail} />
