@@ -25,7 +25,7 @@ const HealthList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/managehealths/${healths.id}`}
+                  to={`/admin/managehealth/${healths.id}`}
                   floated="right"
                   content="View"
                   color="blue"

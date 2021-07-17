@@ -31,7 +31,7 @@ import Clothingtore from '../../../app/stores/clothingStore'
     <Card.Content extra>
       <Button.Group widths={2}>
           <Button as={Link} to={`/admin/manageClothinForm/${clothing.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/manageclothings')} basic color='grey' content='Back'/>
+          <Button onClick={() => history.push('/admin/manageclothing')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>
