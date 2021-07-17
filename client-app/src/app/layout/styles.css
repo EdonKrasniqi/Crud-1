@@ -118,6 +118,7 @@ background: #eeeeee;
 
 .ui.card [class*="right floated"], .ui.cards>.card [class*="right floated"] {
   background-color:#FAE8E0 !important;
+  color: red !important;
 }
 
 .ui.card [class*="right floated"]:hover, .ui.cards>.card [class*="right floated"]:hover {
