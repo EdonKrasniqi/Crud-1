@@ -76,6 +76,7 @@ background: #eeeeee;
 .ui.big.image, .ui.big.images .image, .ui.big.images img, .ui.big.images svg {
   width: 60% !important;
 }
+
 .ProductName:hover{
   color: #424242 !important;
   font-weight: bold;
