@@ -31,7 +31,7 @@ import SportStore from '../../../app/stores/sportStore'
     <Card.Content extra>
       <Button.Group widths={2}>
           <Button as={Link} to={`/admin/manageSportForm/${Sport.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/manageSports')} basic color='grey' content='Back'/>
+          <Button onClick={() => history.push('/admin/managesport')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

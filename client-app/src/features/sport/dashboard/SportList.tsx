@@ -24,7 +24,7 @@ const SportList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/manageSport/${Sports.id}`}
+                  to={`/admin/managesport/${Sports.id}`}
                   floated="right"
                   content="View"
                   color="blue"

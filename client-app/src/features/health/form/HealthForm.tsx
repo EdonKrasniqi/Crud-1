@@ -58,7 +58,7 @@ const HealthForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...health,
         id: uuid(),
       };
-      createHealth(newHealth).then(() => history.push(`/admin/managehealth/${newHealth.id}`));
+      createHealth(newHealth).then(() => history.push(`/admin/manageHealth/${newHealth.id}`));
     } else {
       editHealth(health).then(() => history.push(`/admin/managehealth/${health.id}`));
     }

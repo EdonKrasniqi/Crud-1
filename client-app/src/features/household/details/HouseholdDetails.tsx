@@ -31,7 +31,7 @@ import Householdtore from '../../../app/stores/householdStore'
     <Card.Content extra>
       <Button.Group widths={2}>
           <Button as={Link} to={`/admin/manageHouseholdForm/${household.id}`} basic color='blue' content='Edit'/>
-          <Button onClick={() => history.push('/admin/managehouseholds')} basic color='grey' content='Back'/>
+          <Button onClick={() => history.push('/admin/managehousehold')} basic color='grey' content='Back'/>
       </Button.Group>
     </Card.Content>
   </Card>

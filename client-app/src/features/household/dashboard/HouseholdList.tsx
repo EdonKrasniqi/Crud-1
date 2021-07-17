@@ -24,7 +24,7 @@ const HouseholdList: React.FC = (
               <Card.Content >
                 <Button
                   as={Link}
-                  to={`/admin/managehouseholds/${households.id}`}
+                  to={`/admin/managehousehold/${households.id}`}
                   floated="right"
                   content="View"
                   color="blue"
