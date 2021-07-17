@@ -64,12 +64,13 @@ background: #eeeeee;
 .ProductName{
   color: #FAE8E0!important;
   font-size: 25px !important;
-  margin-left: 37% !important;
+  
   margin-top: 5px !important;
+  text-align: center;
 }
 
 .ProductName:hover{
-  color: #EF7C8E !important;
+  color: #424242 !important;
   font-weight: bold;
 }
 
