@@ -68,7 +68,14 @@ background: #eeeeee;
   margin-top: 5px !important;
   text-align: center;
 }
-
+.homephotos{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.ui.big.image, .ui.big.images .image, .ui.big.images img, .ui.big.images svg {
+  width: 60% !important;
+}
 .ProductName:hover{
   color: #424242 !important;
   font-weight: bold;
